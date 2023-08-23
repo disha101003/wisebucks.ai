@@ -55,7 +55,7 @@ def create_db():
 if __name__ == "__main__":
     engine, connection, stocks, news = create_db()
 
-    connection.execute(text("PRAGMA journal_mode=DELETE"))
+    connection.execute(text("PRAGMA journal_mode=WAL"))
 
     # get list of stocks:
     stock_df = pd.read_excel('SP_500_Companies.xlsx')
