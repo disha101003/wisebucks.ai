@@ -9,7 +9,7 @@ def user_req():
 
 if __name__ == "__main__":
 
-    stock_df = pd.read_excel('src/atradebot/SP_500_Companies.xlsx')
+    stock_df = pd.read_excel('SP_500_Companies.xlsx')
     symbols = stock_df['Symbol'].tolist()
     stock_df['sentiment_counter'] = 0
 
