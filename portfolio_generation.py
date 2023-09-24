@@ -141,7 +141,7 @@ if __name__ == "__main__":
     # Close the connection
     connection.close()
 
-    openai.api_key = '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'
+    openai.api_key = 'sk-'
     
 
     def user_req():
