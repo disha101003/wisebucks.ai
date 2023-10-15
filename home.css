@@ -1,72 +1,241 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  font-family: ubuntu;
+} 
+
+.header {
+  z-index: 1;
+  background: linear-gradient(-45deg, #003260, #0165c2, #04d1ff, black);
+  background-size: 400% 400%;
+  width: 100%;
+  height: 100vh;
+  animation: animate 15s ease infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 81%, 70% 100%, 30% 100%, 0 81%);
+}
+
+.header ul {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.header ul li {
+  display: inline-block;
+  padding: 40px 15px;
+}
+
+.header ul li a {
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
+.header ul li a:hover {
+  text-decoration: underline;
+}
+
+.header h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.header h4 {
+  text-align: center;
+  color: #fff;
+  font-size: 40px;
+  margin-top: 15%;
+}
+
+.header p {
+  text-align: center;
+  font-size: 18px;
+  width: 35%;
+  margin: auto;
+  color: #fff;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0 50%;
   }
-  
-  body {
-    font-family: ubuntu;
+
+  50% {
+    background-position: 100% 50%;
   }
-  
-  .header {
-    z-index: 1;
-    background: linear-gradient(-45deg, #003260, #0165c2, #04d1ff, black);
-    background-size: 400% 400%;
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+
+.custom-button,
+.custom-button:visited {
+  padding: 10px 45px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #003260;
+  justify-content: center;
+  text-align: center;
+  /* margin-left: 615px; */
+  font-size: 25px;
+}
+
+.custom-button:hover {
+  background: #e8349c;
+  color: #FFF;
+}
+
+.custom-button-container {
+  justify-content: center;
+  text-align: center;
+}
+
+.login-container {
+  margin: 30px;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-button,
+.login-button:visited {
+  text-decoration: none;
+  background-color: inherit;
+  color: white;
+  justify-content: center;
+  text-align: center;
+  /* margin-left: 615px; */
+  font-size: 25px;
+}
+
+.login-button:hover {
+  text-decoration: underline;
+}
+
+
+.mission {
+  background-color: white;
+  text-align: center;
+  padding: 10px 15px;
+  margin-top: 100px;
+}
+
+.mission h1 {
+  color: #0165c2;
+  font-size: 50px;
+
+}
+
+.mission h2 {
+  color: black;
+  padding-top: 60px;
+  padding-left: 150px;
+  padding-right: 150px;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.row {
+  margin: 40px;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
     width: 100%;
-    height: 100vh;
-    animation: animate 15s ease infinite;
   }
-  
-  .header ul {
-    height: 50px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .header ul li {
-    display: inline-block;
-    padding: 40px 15px;
-  }
-  
-  .header ul li a {
-    text-decoration: none;
-    color: #fff;
-    text-transform: uppercase;
-    font-size: 20px;
-    padding: 5px 10px;
-  }
-  
-  .header ul li a:hover {
-    background: #fff;
-    color: #000;
-  }
-  
-  .header h2 {
-    text-align: center;
-    color: #fff;
-    font-size: 60px;
-    margin-top: 15%;
-    margin-bottom: 20px;
-  }
-  
-  .header p {
-    text-align: center;
-    font-size: 18px;
-    width: 35%;
-    margin: auto;
-    color: #ddd;
-    line-height: 1.7;
-  }
-  
-  @keyframes animate {
-    0% {
-      background-position: 0 50%;
-    }
-  
-    50% {
-      background-position: 100% 50%;
-    }
-  
-    100% {
-      background-position: 0 50%;
-    }
-  }
+}
+
+img {
+  max-width: 25%;
+  max-height: 15%;
+  float: left;
+  margin-top: 60px;
+}
+
+.image-text {
+  font-size: 25px;
+  padding-left: 20px;
+  padding-top: 20%;
+  float: left;
+  color: black;
+}
+
+.chat-box {
+  background-color: #083464;
+  padding-top: 150px;
+  padding-bottom: 100px;
+}
+
+.chat-box h2 {
+  color: #e19a34;
+  text-align: left;
+  margin-left: 700px;
+  font-size: 30px;
+}
+
+.chat-box h1 {
+  color: white;
+  font-size: 50px;
+  text-align: left;
+  margin-left: 700px;
+}
+
+
+.chat-box h3 {
+  color: white;
+  font-size: 20px;
+  text-align: left;
+  margin-left: 700px;
+  padding-top: 35px;
+  padding-right: 100px;
+  padding-bottom: 50px;
+  line-height: 30px;
+  font-weight: 100;
+}
+
+
+.chatbot-button,
+.chatbot-button:visited {
+  padding: 10px 45px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #003260;
+  justify-content: center;
+  text-align: center;
+  font-size: 25px;
+}
+
+.chatbot-button:hover {
+  background: #e8349c;
+  color: #FFF;
+}
+
+.chatbot-button-container {
+  text-align: left;
+  margin-left: 700px;
+}
