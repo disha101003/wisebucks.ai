@@ -3,6 +3,10 @@ from sklearn.preprocessing import MinMaxScaler
 import yfinance as yf
 import datetime
 
+"""
+TEST COMMIT
+"""
+
 def fetch_stock_data(symbol, start_date, end_date):
     data = yf.download(symbol, start=start_date, end=end_date)
     # change Date Column to datetime
