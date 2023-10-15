@@ -50,7 +50,7 @@ for idx, stock_symbol in enumerate(stocks): #this goes through each of the three
     sim = np.zeros(num_simulations)
     for i in range(num_simulations): #goes through the thousand simulations that I set
         result = monte_carlo(start_price, days, mu, sigma)  #passed the initial stock price,
-        # the number of days for the simulation, and Tesla-specific average daily return and
+        # the number of days for the simulation, and stock-specific average daily return and
         # standard deviation of daily returns
         sim[i] = result[days - 1] #final price is stored
         plt.plot(result)
