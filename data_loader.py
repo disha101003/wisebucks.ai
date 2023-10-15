@@ -65,7 +65,7 @@ def generate_features(df):
 
     return df
 
-def scale_data(df, features_to_scale, scaler_directory='/Users/anujthakkar/Documents/Purdue/Projects/Stock Market/flask_app/data/scalers'):
+def scale_data(df, features_to_scale, scaler_directory='data/scalers'):
     import joblib
     import os
 
@@ -84,8 +84,8 @@ def save_data(df, output_file):
 
 if __name__ == "__main__":
     # Define file paths
-    input_file = '/Users/anujthakkar/Documents/Purdue/Projects/Stock Market/flask_app/data/AAPL.csv'
-    output_file = '/Users/anujthakkar/Documents/Purdue/Projects/Stock Market/flask_app/data/clean/AAPL_feature_engineered.csv'
+    input_file = 'data/AAPL.csv'
+    output_file = 'data/clean/AAPL_feature_engineered.csv'
 
     # Define numerical features to scale
     numerical_features = ['Volume', 'Open', 'High', 'Low', 'Daily_Return',
@@ -107,49 +107,12 @@ if __name__ == "__main__":
     # write to csv
     apple_df.to_csv(input_file, index=False)
 
-    """ we want to predict the closing price of the stock for the next 5 days.
-        Simulate future data for the next 5 business days and append it to the existing dataset.
-    """ 
-
-    # Calculate the next 5 business days
-    next_5_days = pd.bdate_range(end_date, periods=5, freq='C')
-
-    # Create a new DataFrame with the next 5 business days
-    future_dates_df = pd.DataFrame({'Date': next_5_days})
-
-    # Initialize other feature columns for the future dates (you may adjust these based on your assumptions)
-    future_dates_df['Open'] = apple_df['Close'].iloc[-1]  # Assume 'Open' equals the last 'Close' value
-    future_dates_df['High'] = apple_df['Close'].iloc[-1]  # Assume 'High' equals the last 'Close' value
-    future_dates_df['Low'] = apple_df['Close'].iloc[-1]   # Assume 'Low' equals the last 'Close' value
-    future_dates_df['Volume'] = 0  # You may set an appropriate value based on your assumptions
-
-    # Generate synthetic 'Close' prices based on the last available 'Close' price and a daily return assumption
-    # Here, we assume a constant daily return for simplicity; you can modify this assumption
-    # to match your desired trend or pattern
-    last_close_price = apple_df['Close'].iloc[-1]
-    daily_return_assumption = 0.01  # Adjust this value based on your assumption (e.g., 1% daily return)
-    synthetic_close_prices = [last_close_price * (1 + daily_return_assumption ** i) for i in range(1, 6)]
-
-    # Assign the generated 'Close' prices to the future dates DataFrame
-    future_dates_df['Close'] = synthetic_close_prices
-
-
-    # Assign the generated 'Close' prices to the future dates DataFrame
-    future_dates_df['Close'] = synthetic_close_prices
-
-    # Append the future dates DataFrame to the existing dataset
-    apple_df = pd.concat([apple_df, future_dates_df], ignore_index=True)
-
     # Feature engineering (you can also generate additional features for the future dates)
     apple_df = generate_features(apple_df)
 
     # Fill missing values in the DataFrame (e.g., for newly generated features)
     apple_df = apple_df.fillna(0)
 
-
-
-    # Append the future dates DataFrame to the existing dataset
-    apple_df = pd.concat([apple_df, future_dates_df], ignore_index=True)
     # Feature engineering
     apple_df = generate_features(apple_df)
 
