@@ -87,12 +87,30 @@ if __name__ == "__main__":
     input_file = 'data/AAPL.csv'
     output_file = 'data/clean/AAPL_feature_engineered.csv'
 
+    sp500_df = pd.read_excel('SP_500_Companies.xlsx')
+    symbols = sp500_df['Symbol'].tolist()
+
+    # use YFinance to create a dataframe of all the stocks in the S&P 500
+    # store each Dataframe in data folder as a csv
+    today = datetime.date.today().strftime('%Y-%m-%d')
+    for i in symbols:
+        print(i)
+        df = fetch_stock_data(i, '2020-01-01', today)
+        df.to_csv(f'data/{i}.csv', index=False)
+
+
+
+
+
+
+    """
     # Define numerical features to scale
     numerical_features = ['Volume', 'Open', 'High', 'Low', 'Daily_Return',
                           '5_day_mean_close_price', '5_day_mean_volume', 'Daily_Range',
                           'Volatility', 'EMA_Close_5', 'EMA_Close_20']
 
     # Load data
+
     apple_df = load_data(input_file)
 
     # Fetch recent data
@@ -126,3 +144,6 @@ if __name__ == "__main__":
     # Save the processed and feature engineered data to a new CSV file
     save_data(apple_df, output_file)
 
+
+    """
+    

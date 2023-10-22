@@ -49,7 +49,7 @@ if __name__ == "__main__":
     connection.execute(text("PRAGMA journal_mode=WAL"))
 
     # get list of stocks:
-    stock_df = pd.read_excel('src/atradebot/SP_500_Companies.xlsx')
+    stock_df = pd.read_excel('SP_500_Companies.xlsx')
     symbols = stock_df['Symbol'].tolist()
 
 
