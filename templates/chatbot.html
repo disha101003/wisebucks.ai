@@ -41,56 +41,45 @@
 
 <!-- Begin page content -->
 <main class="flex-shrink-0">
-<div class="container w-100 p-0">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-
-    <div id="list-group" class="list-group w-100">
-
-
-
+    <div class="container w-100 p-0">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="list-group" class="list-group w-100"></div>
     </div>
-
-  </div>
-  <div class="bottomSpace"></div>
+    <div class="bottomSpace"></div>
 </main>
-
-    <div class="input-area">
-        <h5>EXAMPLE PROMPTS:</h5>
-        <div class="container w-100 p-0 prompts-container">
-            <div class="row prompts-row">
-                <div class="col">
-                    <div class="p-3 prompt">What's the current price of AAPL stock?</div>
-                </div>
-                <div class="col">
-                    <div class="p-3 prompt">Give me an update on tech stocks.</div>
-                </div>
-                <div class="col">
-                    <div class="p-3 prompt">Provide insights on promising stocks.</div>
-                </div>
+<div class="input-area">
+    <h5>EXAMPLE PROMPTS:</h5>
+    <div class="container w-100 p-0 prompts-container">
+        <div class="row prompts-row">
+            <div class="col">
+                <div class="p-3 prompt">What's the current price of AAPL stock?</div>
+            </div>
+            <div class="col">
+                <div class="p-3 prompt">Give me an update on tech stocks.</div>
+            </div>
+            <div class="col">
+                <div class="p-3 prompt">Provide insights on promising stocks.</div>
             </div>
         </div>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control" id="chat-input" placeholder="Send a message">
-            <img src="{{ url_for('static', filename='images/send.png') }}" id="gpt-button">
-        </div>
-        <div class="tutorial-text">
-            <h6>Need help with the chatbot? Watch our tutorials:</h6>
-            <h6 style="font-weight: 700;" href="#">TUTORIALS</h6>
-
-        </div>
     </div>
-
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="chat-input" placeholder="Send a message">
+        <img src="{{ url_for('static', filename='images/send.png') }}" id="gpt-button">
+    </div>
+    <div class="tutorial-text">
+        <h6>Need help with the chatbot? Watch our tutorials:</h6>
+        <a href=""><h6 style="font-weight: 700;">TUTORIALS</h6></a>
+    </div>
+</div>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename='js/chatbot.js') }}"></script>
     <script>
     </script>
-
   </body>
 </html>

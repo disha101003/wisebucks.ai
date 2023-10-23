@@ -219,7 +219,21 @@ input:focus, input.form-control:focus {
 .tutorial-text {
     display: flex;
     justify-content: center;
+    color: #003260;
 }
 .tutorial-text h6 {
     margin-right: 15px;
+    text-shadow:
+    -1px -1px 0 #F0F9FD,
+     0   -1px 0 #F0F9FD,
+     1px -1px 0 #F0F9FD,
+     1px  0   0 #F0F9FD,
+     1px  1px 0 #F0F9FD,
+     0    1px 0 #F0F9FD,
+    -1px  1px 0 #F0F9FD,
+    -1px  0   0 #F0F9FD;
+}
+.tutorial-text a{
+    color: #003260;
+    text-decoration: none;
 }
