@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <title>Wisebucks</title>
-  <link href="home.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"
     type="text/css" />
 </head>
@@ -13,13 +13,13 @@
 <body>
   <div class="header">
     <ul>
-      <li><a href="home.html">WISEBUCKS.AI</a></li>
+      <li><a href="{{ url_for('index') }}">WISEBUCKS.AI</a></li>
       <li><a href="#">Features</a></li>
       <li><a href="#">About Us</a></li>
       <li style="padding-right: 570px;"><a href="#">Contact Us</a></li>
 
-      <li><a href="login.html">Login</a></li>
-      <li><a href="#" style="background-color: white; color: #003260; border-radius: 5px;">Sign Up</a></li>
+      <li><a href="{{ url_for('login') }}">Login</a></li>
+      <li><a href="{{ url_for('signup') }}" style="background-color: white; color: #003260; border-radius: 5px;">Sign Up</a></li>
     </ul>
     <h4>Welcome to</h4>
     <h2>WiseBucks.AI</h2>
@@ -29,7 +29,7 @@
       <a class="custom-button" href="#">GET STARTED</a>
     </div>
     <div class="login-container">
-      <a class="login-button" href="#">LOGIN</a>
+      <a class="login-button" href="{{ url_for('login') }}">LOGIN</a>
     </div>
 
   </div>
@@ -42,7 +42,7 @@
     <div class="row">
       <div class="column">
         <div class="image">
-          <img src="target.png">
+          <img src="{{ url_for('static', filename='images/target.png') }}">
         </div>
         <div class="image-text">
           <p>Lorem ipsum dolor sit amet,</p>
@@ -53,7 +53,7 @@
 
       <div class="column">
         <div class="image">
-          <img src="target.png">
+          <img src="{{ url_for('static', filename='images/target.png') }}">
         </div>
         <div class="image-text">
           <p>Lorem ipsum dolor sit amet,</p>
@@ -63,7 +63,7 @@
 
       <div class="column">
         <div class="image">
-          <img src="target.png">
+          <img src="{{ url_for('static', filename='images/target.png') }}">
         </div>
         <div class="image-text">
           <p>Lorem ipsum dolor sit amet,</p>
@@ -80,7 +80,7 @@
     <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
       magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</h3>
     <div class="chatbot-button-container">
-      <a class="chatbot-button" href="#">EXPLORE CHATBOT</a>
+      <a class="chatbot-button" href="{{ url_for('chatbot') }}">EXPLORE CHATBOT</a>
     </div>
   </div>
 
@@ -174,7 +174,7 @@
 
 
 
-  <script src="script.js"></script>
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
 
 </html>

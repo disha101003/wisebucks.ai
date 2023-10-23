@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Login Screen</title>
-  <link href="login.css" rel="stylesheet" type="text/css" />
+  <title>Sign Up Screen</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"
     type="text/css" />
 </head>
@@ -14,25 +14,23 @@
 
   <nav class="navbar">
     <a class="navbar-logo" href="#">WiseBucks.AI</a>
-    <a class="navbar-button" href="signup.html">Sign Up</a>
+    <a class="navbar-button" href="login.html">LOGIN</a>
   </nav>
-  
+
   <div class="login-container">
-    <h2>Login</h2>
+    <h2>Sign Up</h2>
     <form class="inline" style="border-color: #003260;">
       <div class="input-icons">
         <i class="fa-regular fa-envelope" style="color: #003260;"></i>
         <input class="input-field" type="text" placeholder="Enter email address">
-        <i class="fa-solid fa-lock" style="color: #003260;"></i>
-        <input class="input-field" type="text" placeholder="Enter password">
+
 
       </div>
     </form>
-    <h4>FORGOT PASSWORD</h4>
 
-    <button class="login-button">LOGIN</button>
-    <h5>Don't have an account? <a href="signup.html">SIGN UP</a></h5>
-    <button class="google-login-button"><i class="fab fa-google"></i> LOGIN WITH GOOGLE</button>
+    <button class="login-button">CONTINUE</button>
+    <h5>Already have an account? <a href="login.html">LOGIN</a></h5>
+    <button class="google-login-button"><i class="fab fa-google"></i> SIGN UP WITH GOOGLE</button>
   </div>
 </body>
 
