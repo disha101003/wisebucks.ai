@@ -49,7 +49,7 @@ if __name__ == "__main__":
     connection.execute(text("PRAGMA journal_mode=WAL"))
 
     # get list of stocks:
-    stock_df = pd.read_excel('SP_500_Companies.xlsx')
+    stock_df = pd.read_csv('sp-500-index-10-29-2023.csv')
     symbols = stock_df['Symbol'].tolist()
 
     # use YFinance to create a dataframe of all the stocks in the S&P 500
