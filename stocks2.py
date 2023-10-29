@@ -2,7 +2,6 @@ import os
 import requests
 import sqlalchemy as db
 import yfinance as yf
-import pandas as pd
 from sqlalchemy import text
 import time
 from ib_insync import *
@@ -21,13 +20,13 @@ def create_db():
 
     # Update the "stocks" table with the desired attributes
     stocks = db.Table('stocks', metadata,
-        db.Column('id', db.Integer(), primary_key=True),
+        db.Column('id', db.Integer(), primary_key=True), # Primary key
         db.Column('symbol', db.String(255), nullable=False),  # Symbol is marked as non-nullable
         db.Column('sector', db.String(255), nullable=True),
-        db.Column('date', db.Date(), nullable=False),  # Date is marked as non-nullable
+        db.Column('date', db.Date(), nullable=False),  
         db.Column('close', db.Float(), nullable=True),
         db.Column('volume', db.Integer(), nullable=True),
-        db.Column('open', db.Float(), nullable=True),  # Change "Open" to "open"
+        db.Column('open', db.Float(), nullable=True),  
         db.Column('high', db.Float(), nullable=True),
         db.Column('low', db.Float(), nullable=True)
     )
@@ -57,18 +56,20 @@ if __name__ == "__main__":
     # store each DF in Stocks table in the database
     today = datetime.date.today().strftime('%Y-%m-%d')
 
-    for i in symbols[:5]:
+    for symbol in symbols:
         # get stock info
         try:
-            ticker = yf.Ticker(i)
-            stock_info = ticker.history(period='1d', start='2020-01-01', end=today)
-            stock_info['symbol'] = i
-            stock_info['date'] = today  # Change "Date" to lowercase "date"
-            stock_info = stock_info[['symbol', 'date', 'Close', 'Volume', 'Open', 'High', 'Low']]  # Change "Date" to "date"
-            stock_info.columns = ['symbol', 'date', 'Close', 'Volume', 'Open', 'High', 'Low']  # Change "Date" to "date"
+            # Get historical data using yf.download()
+            stock_info = yf.download(symbol, start='2020-01-01', end=today) # API call to create DataFrame
+            stock_info['symbol'] = symbol # Add a column for the symbol 
+            stock_info['date'] = stock_info.index.strftime('%Y-%m-%d') # Add a column for the date
+            stock_info = stock_info[['symbol', 'date', 'Close', 'Volume', 'Open', 'High', 'Low']] # Reorder the columns
+            stock_info.columns = ['symbol', 'date', 'close', 'volume', 'open', 'high', 'low'] # Rename the columns
+
+            # Insert the aggregated data into the database
             stock_info.to_sql('stocks', con=engine, if_exists='append', index=False)
-            print(f"Added {i} to the database")
+            print(f"Added {symbol} to the database")
         except Exception as e:
-            print(f"Could not add {i} to the database")
+            print(f"Could not add {symbol} to the database")
             print(e)
         time.sleep(1)
