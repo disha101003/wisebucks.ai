@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="createGame.css">
+    <title>Create Your Trading Game</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Title Section -->
+        <div class="title-section">
+            <h1>Create Your Trading Game</h1>
+            <p>Set up your own paper trading game and compete against our bot!</p>
+        </div>
+
+        <!-- Game Details -->
+        <div class="game-details">
+            <label for="game-name">Game Name:</label>
+            <input type="text" id="game-name" placeholder="Enter game name">
+
+            <label for="start-date">Start Date & Time:</label>
+            <input type="datetime-local" id="start-date">
+
+            <label for="end-date">End Date & Time:</label>
+            <input type="datetime-local" id="end-date">
+        </div>
+
+        <!-- Trading Parameters -->
+        <div class="trading-parameters">
+            <label for="starting-balance">Starting Balance:</label>
+            <input type="number" id="starting-balance" placeholder="$1000">
+
+        </div>
+
+        <!-- Game Rules -->
+        <div class="game-rules">
+            <label for="max-trades">Maximum Trades:</label>
+            <input type="number" id="max-trades" placeholder="e.g., 50">
+        </div>
+        <label for="game-visibility">Game Visibility:</label>
+        <select id="game-visibility">
+            <option value="public">Public</option>
+            <option value="private">Private</option>
+        </select>
+<!-- Help/Support Section -->
+<div class="help-support">
+    <h2>Help & Support</h2>
+    <button id="faq-button">Go to FAQs</button>
+</div>
+        
+    </div>
+</body>
+</html>
