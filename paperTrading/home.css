@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+body {
+    background: linear-gradient(to bottom, #89CFF0, #000080);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 180px; /* Adjusted padding to account for navbar */
+    padding-bottom: 30px; /* Reduced padding from the bottom */
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Press Start 2P', 'Roboto';
+}
+
+
+.navbar {
+    position: fixed; 
+    top: 0;
+    left: 10;
+    width: 100%;
+    background-color: #FFFFFF;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    padding: 35px 10%;
+    font-family: 'Roboto', sans-serif;
+   
+}
+
+
+
+.navbar-menu a {
+    text-decoration: none;
+    margin-left: 20px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.navbar-menu a:hover {
+    color: #3085c6;
+}
+
+.title-container {
+    width: 80%;
+    text-align: center;
+    font-size: 20px;
+}
+
+.game-containers {
+    display: flex;
+    gap: 20px;
+    width: 80%;
+    justify-content: space-between;
+    font-size: 20px;
+}
+
+.create-game-container, .find-game-container {
+    background: linear-gradient(to bottom, #E5E9EC, #D4D8DB);
+    padding: 20px;
+    border-radius: 5px;
+    width: 45%; 
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 90%;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #3085c6;
+    color: #ffffff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700; 
+    border-radius: 20px;
+}
+
+button:hover {
+    background-color: #e23e3e;
+}
