@@ -27,7 +27,7 @@ def create_db():
         db.Column('volume', db.Integer(), nullable=True),
         db.Column('open', db.Float(), nullable=True),  
         db.Column('high', db.Float(), nullable=True),
-        db.Column('low', db.Float(), nullable=True)
+        db.Column('low', db.Float(), nullable=True),
     )
 
 
@@ -74,9 +74,9 @@ if __name__ == "__main__":
                 stock_info.columns = ['symbol', 'date', 'close', 'volume', 'open', 'high', 'low']  # Rename the columns
 
                 # Insert the aggregated data into the database
-                stock_info.to_sql('stocks', con=engine, if_exists='append', index=False)
+                stock_info.to_sql('stocks', con=engine, if_exists='append', index=False) 
                 print(f"Added {symbol} to the database")
             except Exception as e:
-                print(f"Could not add {symbol} to the database")
+                print(f"Could not add {symbol} to twhe database")
                 print(e)
             time.sleep(1)
