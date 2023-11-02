@@ -23,6 +23,14 @@ def create_db():
         db.Column('open', db.Float(), nullable=True),  
         db.Column('high', db.Float(), nullable=True),
         db.Column('low', db.Float(), nullable=True),
+        db.Column('Daily_Return', db.Float(), nullable=True),
+        db.Column('5_day_mean_close_price', db.Float(), nullable=True),
+        db.Column('5_day_mean_volume', db.Float(), nullable=True),
+        db.Column('Daily_Range', db.Float(), nullable=True),
+        db.Column('Volatility', db.Float(), nullable=True),
+        db.Column('Quarter', db.String(255), nullable=True),
+        db.Column('EMA_Close_5', db.Float(), nullable=True),
+        db.Column('EMA_Close_20', db.Float(), nullable=True)
     )
 
     # Create table in the database:
@@ -66,6 +74,8 @@ def update_db(engine, connection):
                     print(f"Updated {symbol} data from {start_date} to {today}")
                 else:
                     print(f"No data available for {symbol} from {start_date} to {today}")
+                    break
+
             except Exception as e:
                 print(f"Could not update {symbol} data from {start_date} to {today}")
                 print(e)
@@ -73,7 +83,17 @@ def update_db(engine, connection):
         else:
             print(f"Data for {symbol} is already up to date. Skipping.")
 
+def get_symbols(connection):
+    # Query to retrieve unique symbols from the 'stocks' table
+    query = db.text("SELECT DISTINCT symbol FROM stocks;")
+    result = connection.execute(query)
+    symbols = [row[0] for row in result]
+
+    return symbols
+
 if __name__ == "__main__":
+    import feature_engineering
+
     # Check if the database exists and create it if not
     if not os.path.exists('atradebot.db'):
         create_db()
@@ -81,3 +101,10 @@ if __name__ == "__main__":
         engine, connection, _ = create_db()
     
     update_db(engine, connection)
+
+    # Get the list of symbols from the 'stocks' table
+    symbols = get_symbols(connection)
+    for symbol in symbols:
+        feature_engineering.feature_engineering(connection, symbol)
+
+    connection.close()
