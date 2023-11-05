@@ -13,8 +13,17 @@
 <body>
   <div class="header">
     <ul>
-      <li><a href="{{ url_for('index') }}">WISEBUCKS.AI</a></li>
-      <li><a href="#">Features</a></li>
+      <li><a href="{{ url_for('home') }}">WISEBUCKS.AI</a></li>
+
+      <div class="dropdown">
+        <li><a href="#">Features ▾</a></li>
+        <div class="dropdown-content">
+          <a href="#">WiseBucks Chatbot</a>
+          <a href="#">Investment Challenge</a>
+          <a href="#">Reward Base Investing</a>
+          <a href="#">Paper Trading</a>
+        </div>
+      </div>
       <li><a href="#">About Us</a></li>
       <li style="padding-right: 570px;"><a href="#">Contact Us</a></li>
 
@@ -36,8 +45,8 @@
 
   <div class="mission">
     <h1>OUR MISSION</h1>
-    <h2>To simplify and enhance the retail investing experience, addressing the needs of individual investors more
-      effectively with our comprehensive web app for FinTech queries, paper trading and portfolio generation.</h2>
+    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua.</h2>
 
     <div class="row">
       <div class="column">
@@ -45,8 +54,8 @@
           <img src="{{ url_for('static', filename='images/target.png') }}">
         </div>
         <div class="image-text">
-          <p>Implemented AI Powered</p>
-          <p>ChatBot Feature</p>
+          <p>Lorem ipsum dolor sit amet,</p>
+          <p>consectetur adipiscing elit,</p>
         </div>
 
       </div>
@@ -56,8 +65,8 @@
           <img src="{{ url_for('static', filename='images/target.png') }}">
         </div>
         <div class="image-text">
-          <p>Development of a</p>
-          <p>Paper Trading Platform</p>
+          <p>Lorem ipsum dolor sit amet,</p>
+          <p>consectetur adipiscing elit,</p>
         </div>
       </div>
 
@@ -66,8 +75,8 @@
           <img src="{{ url_for('static', filename='images/target.png') }}">
         </div>
         <div class="image-text">
-          <p>Creation of our own</p>
-          <p>Large Language Model</p>
+          <p>Lorem ipsum dolor sit amet,</p>
+          <p>consectetur adipiscing elit,</p>
         </div>
       </div>
 
@@ -77,37 +86,38 @@
   <div class="chat-box">
     <h2>AI INTERGRATION</h2>
     <h1>WISEBUCK CHATBOX</h1>
-    <h3>An AI integrated chatbot that answers general queries related to FinTech using a Large language model.</h3>
+    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</h3>
     <div class="chatbot-button-container">
-      <a class="chatbot-button" href="{{ url_for('chatbot') }}">EXPLORE CHATBOT</a>
+      <a class="chatbot-button" href="#">EXPLORE CHATBOT</a>
     </div>
   </div>
 
   <div class="chat-box2">
     <h2>PEER TO PEER COMPETITION</h2>
     <h1>INVESTMENT CHALLENGE</h1>
-    <h3>Individuals will have an option to competing against each other through a common leader board that will display
-      their scores based on their investment practices.</h3>
+    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</h3>
     <div class="chatbot2-button-container">
       <a class="chatbot2-button" href="#">EXPLORE CHALLENGE</a>
     </div>
   </div>
 
   <div class="chat-box">
-    <h2>COMPLETE DIFFERENT LEVELS</h2>
+    <h2>LOREM IPSUM</h2>
     <h1>REWARD BASE INVESTING</h1>
-    <h3>An opportunity to be rewarded with paper money based on exceptional investment practices and completing various
-      levels.</h3>
+    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</h3>
     <div class="chatbot-button-container">
       <a class="chatbot-button" href="#">EXPLORE INVESTING</a>
     </div>
   </div>
 
   <div class="chat-box2">
-    <h2>NO REAL MONEY NEEDED</h2>
+    <h2>LOREM IPSUM</h2>
     <h1>PAPER TRADING</h1>
-    <h3>Come practise trading with or without the help of our AI algorithm recommendations, and have a leaderboard where
-      they can track their scores!</h3>
+    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</h3>
     <div class="chatbot2-button-container">
       <a class="chatbot2-button" href="#">EXPLORE TRADING</a>
     </div>
@@ -131,12 +141,12 @@
         <div class="footer-col">
           <h4>Features</h4>
           <ul>
-            <li><a href="#">Wisebucks Chatbot</a></li>
+            <li><a href="#">Wisebuck Chatbot</a></li>
             <li><a href="#">Investment Challenege</a></li>
           </ul>
         </div>
         <div class="footer-col">
-          <h4></h4>
+          <h4 style="color: inherit;">.</h4>
           <ul>
             <li><a href="#">Reward Base Investing</a></li>
             <li><a href="#">Paper Trading</a></li>
@@ -163,6 +173,7 @@
         </div>
         <div class="footer-col">
           <div class="footer-button-container">
+            <h4 style="color: inherit;">.</h4>
             <a class="footer-button" href="#">Contact Us</a>
           </div>
         </div>
@@ -173,7 +184,7 @@
 
 
 
-  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/signup.js') }}"></script>
 </body>
 
 </html>
