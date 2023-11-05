@@ -15,7 +15,7 @@ body {
   width: 100%;
   height: 100vh;
   animation: animate 15s ease infinite;
-  clip-path: polygon(0 0, 100% 0, 100% 70%, 68% 100%, 32% 100%, 0 72%);
+  clip-path: polygon(0 0, 100% 0, 100% 86%, 70% 96%, 30% 96%, 0 86%);
 }
 
 .header ul {
@@ -33,7 +33,7 @@ body {
   text-decoration: none;
   color: #fff;
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 18px;
   padding: 5px 10px;
 }
 
@@ -64,6 +64,49 @@ body {
   line-height: 1.7;
   margin-bottom: 20px;
 }
+
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5%;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #0165c2;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
 
 @keyframes animate {
   0% {
@@ -362,20 +405,6 @@ ul {
   line-height: 40px;
   color: white;
 }
-/* 
-@media(max-width: 767px) {
-  foot-col {
-    width: 30%;
-    margin-bottom: 30px;
-  }
-}
-
-@media(max-width: 574px) {
-  foot-col {
-    width: 100%;
-  }
-} */
-
 
 .footer-button,
 .footer-button:visited {
@@ -398,7 +427,7 @@ ul {
   text-align: center;
 }
 
-.footer-col img{
+.footer-col img {
   height: max-content;
   width: max-content;
 }
