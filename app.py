@@ -22,7 +22,6 @@ app.register_error_handler(404, page_not_found)
 
 @app.route('/', methods = ['POST', 'GET'])
 def index():
-  
     if request.method == 'POST':
         question = request.form['prompt']
         template = """Financial Query: {question}

@@ -83,20 +83,8 @@ function askQuestion(){
 
 
 
-let background = document.querySelector('.imageCover');
-let backgroundImageVisible = false;
 const inputBox = document.getElementById('chat-input');
 const inputArea = document.querySelector('.input-area');
-
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'k' && !inputBox.contains(document.activeElement)) {
-        backgroundImageVisible = !backgroundImageVisible;
-        background.style.display = backgroundImageVisible ? 'block' : 'none';
-    }
-    if (event.key === 'u') {
-        window.scrollTo(0, document.body.scrollHeight);
-    }
-});
 
 let chatEl = document.querySelector('.container');
 if (chatEl) {
