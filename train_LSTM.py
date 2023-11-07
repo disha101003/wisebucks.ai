@@ -2,19 +2,27 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+import sqlalchemy as db
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
 
 # Load data
-def load_data(file_path):
-    df = pd.read_csv(file_path)
-    return df
+def load_data(file_path, symbol):
+    # connect to the database
+    engine = db.create_engine(f'sqlite:///{file_path}', echo=True)
+    connection = engine.connect()
+
+    # fetch the data
+    query = "SELECT * FROM stocks WHERE symbol = '{}'".format(symbol)
+    data = pd.read_sql(query, connection)
+
+    return data
     
 
 def preprocess_data(df):
     # Define the features and target variables
-    target = ['Close']
-    features = df.drop(['Close', 'Date', 'Quarter'], axis=1).columns.tolist()
+    target = ['close']
+    features = df.drop(['close', 'date', 'quarter'], axis=1).columns.tolist()
 
     # Create arrays for the features and the response variable
     X = df[features].values
@@ -50,25 +58,30 @@ def print_model_summary(model):
     print(model.summary())
 
 if __name__ == "__main__":
-    data_file_path = './flask_app/data/clean/AAPL_feature_engineered.csv'
+    data_file_path = './atradebot.db'
     epochs = 100
     batch_size = 5
 
-    apple_df = load_data(data_file_path)
+    # Get the list of stock symbols from the CSV
+    stock_df = pd.read_csv('sp-500-index-10-29-2023.csv')
+    symbols = stock_df['Symbol'].tolist()
 
-    X, y_scaled = preprocess_data(apple_df)
-    X_lstm = prepare_lstm_input(X)
-    
-    X_train, X_test, y_train, y_test = train_test_split(X_lstm, y_scaled, test_size=0.2, shuffle=False)
+    for symbol in symbols:
 
-    model = build_lstm_model(input_shape=(X_train.shape[1], X_train.shape[2]))
-    history = train_lstm_model(model, X_train, y_train, epochs=epochs, batch_size=batch_size)
-    print_model_summary(model)
+        data_frame = load_data(data_file_path, symbol).drop(['id', 'symbol'], axis=1)
 
-    # print model accuracy
-    train_score = model.evaluate(X_train, y_train, verbose=0)
-    print('Train Score: %.2f MSE (%.2f RMSE)' % (train_score, np.sqrt(train_score)))
+        X, y_scaled = preprocess_data(data_frame)
+        X_lstm = prepare_lstm_input(X)
+        
+        X_train, X_test, y_train, y_test = train_test_split(X_lstm, y_scaled, test_size=0.2, shuffle=False)
 
-    # Save the trained model
-    model.save('trained_lstm_model.h5')
-    print('Model saved to trained_lstm_model.h5')
+        model = build_lstm_model(input_shape=(X_train.shape[1], X_train.shape[2]))
+        history = train_lstm_model(model, X_train, y_train, epochs=epochs, batch_size=batch_size)
+        print_model_summary(model)
+
+        # print model accuracy
+        train_score = model.evaluate(X_train, y_train, verbose=0)
+        print('Train Score: %.2f MSE (%.2f RMSE)' % (train_score, np.sqrt(train_score)))
+
+        # Save the trained model
+        model.save(f'./LSTM/models/{symbol}_lstm_model.h5')
