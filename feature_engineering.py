@@ -9,28 +9,28 @@ def connect_to_db():
 
 def generate_features(df):
     # Calculate daily returns
-    df['Daily_Return'] = df['Close'].pct_change(periods=1)
+    df['daily_return'] = df['close'].pct_change(periods=1)
 
     # 5-day rolling averages for close price and volume
-    df['5_day_mean_close_price'] = df['Close'].rolling(5).mean()
-    df['5_day_mean_volume'] = df['Volume'].rolling(5).mean()
+    df['5_day_mean_close_price'] = df['close'].rolling(5).mean()
+    df['5_day_mean_volume'] = df['volume'].rolling(5).mean()
 
     # Calculate daily range and volatility
-    df['Daily_Range'] = df['High'] - df['Low']
-    df['Volatility'] = df['Daily_Return'].rolling(5).std()
+    df['daily_range'] = df['high'] - df['low']
+    df['volatility'] = df['daily_return'].rolling(5).std()
 
     # Create a new column called Quarter
-    df['Quarter'] = pd.PeriodIndex(df['Date'], freq='Q')
+    df['quarter'] = pd.PeriodIndex(df['date'], freq='Q').astype(str)
 
     # Fill missing values
     df['5_day_mean_close_price'] = df['5_day_mean_close_price'].fillna(0)
     df['5_day_mean_volume'] = df['5_day_mean_volume'].fillna(0)
-    df['Volatility'] = df['Volatility'].fillna(0)
-    df['Daily_Return'] = df['Daily_Return'].fillna(0)
+    df['volatility'] = df['volatility'].fillna(0)
+    df['daily_return'] = df['daily_return'].fillna(0)
 
     # Calculate 5-day and 20-day exponential moving averages for closing price
-    df['EMA_Close_5'] = df['Close'].ewm(span=5, adjust=False).mean()
-    df['EMA_Close_20'] = df['Close'].ewm(span=20, adjust=False).mean()
+    df['EMA_Close_5'] = df['close'].ewm(span=5, adjust=False).mean()
+    df['EMA_Close_20'] = df['close'].ewm(span=20, adjust=False).mean()
 
     return df
 

@@ -23,12 +23,12 @@ def create_db():
         db.Column('open', db.Float(), nullable=True),  
         db.Column('high', db.Float(), nullable=True),
         db.Column('low', db.Float(), nullable=True),
-        db.Column('Daily_Return', db.Float(), nullable=True),
+        db.Column('daily_return', db.Float(), nullable=True),
         db.Column('5_day_mean_close_price', db.Float(), nullable=True),
         db.Column('5_day_mean_volume', db.Float(), nullable=True),
-        db.Column('Daily_Range', db.Float(), nullable=True),
-        db.Column('Volatility', db.Float(), nullable=True),
-        db.Column('Quarter', db.String(255), nullable=True),
+        db.Column('daily_range', db.Float(), nullable=True),
+        db.Column('volatility', db.Float(), nullable=True),
+        db.Column('quarter', db.String(255), nullable=True),
         db.Column('EMA_Close_5', db.Float(), nullable=True),
         db.Column('EMA_Close_20', db.Float(), nullable=True)
     )
@@ -37,7 +37,10 @@ def create_db():
     metadata.create_all(engine)
     return engine, connection, stocks
 
-def update_db(engine, connection):
+def update_db(connection):
+    from feature_engineering import generate_features
+
+
     # Get the list of stock symbols from the CSV
     stock_df = pd.read_csv('sp-500-index-10-29-2023.csv')
     symbols = stock_df['Symbol'].tolist()
@@ -67,6 +70,10 @@ def update_db(engine, connection):
                     stock_info['date'] = stock_info.index.strftime('%Y-%m-%d')
                     stock_info = stock_info[['symbol', 'date', 'Close', 'Volume', 'Open', 'High', 'Low']]
                     stock_info.columns = ['symbol', 'date', 'close', 'volume', 'open', 'high', 'low']
+
+                    # Apply feature engineering to the data and add it to the DataFrame
+                    stock_info = generate_features(stock_info)
+                    print(stock_info)                    
                     
                     # Update the database with the new data
                     stock_info.to_sql('stocks', con=engine, if_exists='append', index=False, index_label='date')
@@ -82,6 +89,7 @@ def update_db(engine, connection):
             time.sleep(1)
         else:
             print(f"Data for {symbol} is already up to date. Skipping.")
+        
 
 def get_symbols(connection):
     # Query to retrieve unique symbols from the 'stocks' table
@@ -94,17 +102,9 @@ def get_symbols(connection):
 if __name__ == "__main__":
     import feature_engineering
 
-    # Check if the database exists and create it if not
-    if not os.path.exists('atradebot.db'):
-        create_db()
-    else:
-        engine, connection, _ = create_db()
     
-    update_db(engine, connection)
-
-    # Get the list of symbols from the 'stocks' table
-    symbols = get_symbols(connection)
-    for symbol in symbols:
-        feature_engineering.feature_engineering(connection, symbol)
-
+    engine, connection, _ = create_db()
+    
+    update_db(connection)
+    
     connection.close()
