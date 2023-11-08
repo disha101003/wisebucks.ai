@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Trading Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-form-container">
+        <h2>Create Your Trading Game</h2>
+        <form id="create-game-form">
+            <div class="form-group">
+                <label for="game-name">Game Name:</label>
+                <input type="text" id="game-name" name="game-name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="starting-cash">Starting Cash:</label>
+                <input type="number" id="starting-cash" name="starting-cash" required min="1000" value="100000">
+            </div>
+
+            <div class="form-group">
+                <label for="game-duration">Game Duration:</label>
+                <select id="game-duration" name="game-duration">
+                    <option value="30">1 Month</option>
+                    <option value="90">3 Months</option>
+                    <option value="180">6 Months</option>
+                    <option value="365">1 Year</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="markets">Markets to Trade:</label>
+                <select multiple id="markets" name="markets">
+                    <option value="nyse">NYSE</option>
+                    <option value="nasdaq">NASDAQ</option>
+                    <option value="lse">LSE</option>
+                    <option value="hkse">HKSE</option>
+                    <option value="tse">TSE</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="allow-short-selling">Allow Short Selling:</label>
+                <input type="checkbox" id="allow-short-selling" name="allow-short-selling">
+            </div>
+
+            <div class="form-group">
+                <label for="margin-trading">Allow Margin Trading:</label>
+                <input type="checkbox" id="margin-trading" name="margin-trading">
+            </div>
+
+            <button type="submit">Create Game</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

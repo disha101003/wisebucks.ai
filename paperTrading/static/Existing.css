@@ -1,0 +1,260 @@
+* { 
+    box-sizing: border-box; 
+}
+body { 
+    font-family: Arial, sans-serif; 
+    margin: 0; 
+    padding: 0;
+    background-color: #f7f7f7; 
+}
+.container { 
+    display: flex;
+    padding: 10px; 
+}
+.left-column { 
+    width: 25%; 
+    padding: 10px; 
+}
+.right-column { 
+    width: 75%; 
+    padding: 10px; 
+}
+.card { 
+    background: #fff;
+    margin-bottom: 20px; 
+    padding: 20px; 
+    border-radius: 4px; 
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+.card:not(:last-child) { 
+    margin-bottom: 20px; 
+}
+.card-header { 
+    margin-bottom: 20px; 
+}
+.card-content { 
+    margin-bottom: 20px; 
+}
+.footer { 
+    text-align: center; 
+    padding: 20px 0;
+}
+
+
+/* ... (rest of your CSS) ... */
+
+/* Adjustments for Financial Overview */
+/* ... (rest of your CSS) ... */
+
+/* Adjustments for Financial Overview */
+.financial-overview {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    padding: 2px 20px; /* Minimal padding to make it less tall */
+    font-size: 0.8em; /* Smaller font size for all text in the card */
+  }
+  
+  .card-section {
+    flex-grow: 1;
+    text-align: center;
+    padding: 0 10px; /* Adjust padding as needed */
+  }
+  
+  .icon {
+    display: inline-block;
+    font-size: 18px; /* Adjust icon size as needed */
+    margin-right: 5px; /* Space between icon and text */
+    /* Replace with actual icons */
+  }
+  
+  .h2, .amount, .description {
+    margin: 2px 0; /* Smaller margins to decrease height */
+    line-height: 1.1; /* Tighter line height to decrease space between lines */
+  }
+  
+  .amount {
+    font-size: 1.4em; /* Larger font size for amount */
+    line-height: 1.1; /* Tighter line height for amount */
+  }
+  
+  .divider {
+    border-left: 1px solid #ccc;
+    height: 30px; /* Reduced height */
+    align-self: center; /* Ensure divider is centered */
+  }
+  
+  /* ... (rest of your CSS) ... */
+/* ... (rest of your CSS) ... */
+
+.holdings-overview {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-size: 0.9em;
+  }
+  
+  .icon-and-text {
+    display: flex;
+    align-items: center;
+  }
+  
+  .icon {
+    /* Add styles for the icon, or replace with an actual image */
+    font-size: 24px;
+    margin-right: 10px;
+  }
+  
+  .amount {
+    font-size: 2em;
+    margin: 5px 0;
+  }
+  
+  .description {
+    margin: 2px 0;
+  }
+  
+  .percentage {
+    font-size: 1.5em;
+    color: #4CAF50; /* or any color indicating profit/loss */
+  }
+  
+  .holdings-chart {
+    /* Placeholder styles for the bar chart */
+    height: 50px;
+    width: 100%;
+    background-image: url('path-to-your-colorful-bar-chart.png'); /* Replace with actual path */
+    background-size: cover;
+  }
+  
+  .holdings-stats .stat {
+    text-align: center;
+  }
+  
+  .color-indicator {
+    width: 5px;
+    height: 100%;
+    background-color: #4CAF50; /* Default color, will be overridden by JS */
+    float: left;
+    margin-right: 5px; /* Space between indicator and ticker name */
+}
+
+  
+h2 {
+    color: #666;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+.amount {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 0.2em;
+}
+
+.description {
+    color: #999;
+    font-size: 1em;
+    margin-bottom: 0.5em;
+}
+
+.left-column {
+    width: 25%; /* Adjust width as needed */
+    padding: 10px;
+    background-color: #f7f7f7; /* Your background color */
+    overflow-y: auto; /* Enables scrolling if there are many tickers */
+  }
+  
+  .stock-box {
+    background: #ffffff;
+    margin-bottom: 10px;
+    padding: 10px 5px; /* Reduced vertical padding */
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space out the contents */
+}
+
+.stock-box h2 {
+    font-size: 0.9em; /* Adjust font size as needed */
+    color: #333; /* Change color based on your design */
+}
+
+/* .stock-change {
+    font-size: 0.9em;
+    /* Use your color classes to change the color based on the stock price change 
+}*/
+  
+  .stock-price {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .stock-change {
+    font-size: 0.9em;
+    color: #4CAF50; /* Green for positive, red for negative */
+  }
+  
+.stock-change.positive {
+    color: #4CAF50; /* Green for positive change */
+}
+
+.stock-change.negative {
+    color: #f44336; /* Red for negative change */
+}
+
+.dark-red {
+  color: #880000;
+}
+
+.red {
+  color: #FF0000;
+}
+
+.gray {
+  color: #808080;
+}
+
+.green {
+  color: #00BB00;
+}
+
+.dark-green {
+  color: #006600;
+}
+
+
+.dark-red, .dark-red h2, .dark-red .stock-change {
+  color: #880000;
+}
+
+.red, .red h2, .red .stock-change {
+  color: #FF0000;
+}
+
+.gray, .gray h2, .gray .stock-change {
+  color: #808080;
+}
+
+.green, .green h2, .green .stock-change {
+  color: #00BB00;
+}
+
+.dark-green, .dark-green h2, .dark-green .stock-change {
+  color: #006600;
+}
+.red-flash {
+  transition: background-color 1s;
+  background-color: #ffcccc !important; 
+}
+
+.green-flash {
+  transition: background-color 1s;
+  background-color: #ccffcc !important; 
+}
+
+.gray-flash {
+  transition: background-color 1s;
+  background-color: #ccc !important; 
+}

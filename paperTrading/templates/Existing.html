@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Layout</title>
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='Existing.css') }}"
+/>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+
+<div class="container">
+  <!-- Left Column -->
+  <div class="left-column">
+    <div id="tickers-grid">
+      <form id="add-ticker-form">
+        <input type="text" id="new-ticker" placeholder="Add Ticker" required />
+        <button type="submit">Add</button>
+      </form>
+      <div class="stock-box">
+       
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- Right Column -->
+  <div class="right-column">
+    <!-- Top Row Card -->
+    <div class="card financial-overview">
+      <div class="card-section">
+        <span class="icon">&#x24B8;</span> <!-- Placeholder for Equity icon -->
+        <h2>Equity</h2>
+        <p class="amount">$50,000</p>
+        <p class="description">Available balance</p>
+      </div>
+      <div class="divider"></div>
+      <div class="card-section">
+        <p class="description">Margins used</p>
+        <p class="amount">0</p>
+        <p class="description">Account value</p>
+        <p class="amount">$50,000</p>
+      </div>
+      <div class="divider"></div>
+      <div class="card-section">
+        <span class="icon">&#x24B8;</span> <!-- Placeholder for Commodity icon -->
+        <h2>Commodity</h2>
+        <p class="amount">$20,000</p>
+        <p class="description">Available balance</p>
+        <p class="description">Margins used</p>
+        <p class="amount">$2,000</p>
+        <p class="description">Account value</p>
+        <p class="amount">$4,000</p>
+      </div>
+    </div>
+  
+
+    <!-- Middle Row Card -->
+<!-- Middle Row Card -->
+<div class="card holdings-overview">
+  <div class="holdings-info">
+    <div class="icon-and-text">
+       <!-- Placeholder for Holdings icon -->
+      <h2>Holdings (138)</h2>
+    </div>
+    <p class="amount">93.38k</p>
+    <p class="description">P&L</p>
+    <p class="percentage">22.51%</p>
+  </div>
+  <div class="holdings-chart">
+    <!-- Insert the image for the bar chart -->
+    <img src="{{ url_for('static', filename='images/Bar.png') }}" alt="Holdings Chart" style="width:90%; height:auto;">
+
+  </div>
+  <div class="holdings-stats">
+    <div class="stat">
+      <p class="description">Current value</p>
+      <p class="amount">5.08L</p>
+    </div>
+    <div class="stat">
+      <p class="description">Investment</p>
+      <p class="amount">4.14L</p>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Bottom Row Card -->
+    <div class="card">
+      <!-- Content -->
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <!-- Footer Content -->
+</div>
+
+</body>
+</html>

@@ -1,40 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paper Trading Platform</title>
-    <link rel="stylesheet" href="home.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Layout</title>
+<link rel="stylesheet" href="Existing.css">
 </head>
 <body>
-    <div class="navbar">
-        <nav class="navbar-menu">
-            <a href="">Home</a>
-            <a href="#">Dashboard</a>
-            <a href="#">Something</a>
-        </nav>
+
+<div class="container">
+  <!-- Left Column -->
+  <div class="left-column">
+    <div class="card">
+      <!-- Content for Left Column Card -->
+    </div>
+    <!-- Add more cards as needed -->
+  </div>
+
+  <!-- Right Column -->
+  <div class="right-column">
+    <!-- Top Row Card similar to the screenshot provided -->
+    <div class="card financial-overview">
+      <div class="card-section">
+        <h2>Equity</h2>
+        <p class="amount">13.08L</p>
+        <p class="description">Available balance</p>
+      </div>
+      <div class="divider"></div>
+      <div class="card-section">
+        <p class="description">Margins used</p>
+        <p class="amount">0</p>
+        <p class="description">Account value</p>
+        <p class="amount">13.08L</p>
+      </div>
+      <div class="divider"></div>
+      <div class="card-section">
+        <h2>Commodity</h2>
+        <p class="amount">58.31K</p>
+        <p class="description">Available balance</p>
+        <p class="description">Margins used</p>
+        <p class="amount">1.33L</p>
+        <p class="description">Account value</p>
+        <p class="amount">1.91L</p>
+      </div>
     </div>
 
-    <div class="title-container">
-        <h1>Paper Trading Platform</h1>
-        <p>Dive into the world of trading</p>
-        <p>No real money needed, use your strategy and compete against our bot!</p>
+    <!-- Middle Row Card -->
+    <div class="card">
+      <!-- Content -->
     </div>
-    
-    <div class="game-containers">
-        <div class="create-game-container">
-            <h2>Create Game</h2>
-            <p>Some details about creating game here...</p>
-            <a href="createGame.html">
-                <button>Open Game</button>
-            </a>
-        </div>
-    
-        <div class="find-game-container">
-            <h2>Existing Games</h2>
-            <p>Some details about finding existing games here...</p>
-            <button>Search Game</button>
-        </div>
+
+    <!-- Bottom Row Card -->
+    <div class="card">
+      <!-- Content -->
     </div>
+  </div>
+</div>
+
+<div class="footer">
+  <!-- Footer Content -->
+</div>
+
 </body>
 </html>
