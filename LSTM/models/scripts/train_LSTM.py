@@ -5,6 +5,7 @@ from sklearn.preprocessing import StandardScaler
 import sqlalchemy as db
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
+from keras.models import load_model as keras_load_model  # Rename the imported function
 
 # Load data
 def load_data(file_path, symbol):
@@ -22,7 +23,7 @@ def load_data(file_path, symbol):
 def preprocess_data(df):
     # Define the features and target variables
     target = ['close']
-    features = df.drop(['close', 'date', 'quarter'], axis=1).columns.tolist()
+    features = df.drop(['symbol', 'close', 'date', 'quarter'], axis=1).columns.tolist()
 
     # Create arrays for the features and the response variable
     X = df[features].values
@@ -57,6 +58,11 @@ def train_lstm_model(model, X_train, y_train, epochs, batch_size):
 def print_model_summary(model):
     print(model.summary())
 
+def load_model(model_path):
+    model = keras_load_model(model_path)  # Use the imported Keras function
+    return model
+
+
 if __name__ == "__main__":
     data_file_path = './atradebot.db'
     epochs = 100
@@ -64,11 +70,12 @@ if __name__ == "__main__":
 
     # Get the list of stock symbols from the CSV
     stock_df = pd.read_csv('sp-500-index-10-29-2023.csv')
-    symbols = stock_df['Symbol'].tolist()
+    #symbols = stock_df['Symbol'].tolist()
+    symbols = ['AAPL', 'AMZN', 'GOOG', 'TSLA']
 
-    for symbol in symbols:
+    for symbol in symbols[:1]:
 
-        data_frame = load_data(data_file_path, symbol).drop(['id', 'symbol'], axis=1)
+        data_frame = load_data(data_file_path, symbol).drop(['id'], axis=1)
 
         X, y_scaled = preprocess_data(data_frame)
         X_lstm = prepare_lstm_input(X)
@@ -85,3 +92,23 @@ if __name__ == "__main__":
 
         # Save the trained model
         model.save(f'./LSTM/models/{symbol}_lstm_model.h5')
+
+        # Predict
+        # Load the trained LSTM model
+        model = load_model(f'./LSTM/models/{symbol}_lstm_model.h5')
+
+        # Get the last available data point for prediction
+        last_data_point = X_lstm[-1:]
+        last_data_point_date = data_frame.iloc[-1]['date']
+        print(f"Symbol: {symbol}, Last Data Point Date: {last_data_point_date}")
+
+        # Make a prediction for the next day's Close price
+        predicted_scaled_close = model.predict(last_data_point)
+        print(f"PREDICTED SCALED CLOSE: {predicted_scaled_close}")
+
+        # Inverse scaling to get the actual Close price
+        scaler = StandardScaler()
+        scaler.fit(y_scaled)
+        predicted_close = scaler.inverse_transform(predicted_scaled_close)
+        print(predicted_close)
+        print(predicted_scaled_close)
