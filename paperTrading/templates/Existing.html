@@ -30,24 +30,50 @@ href="{{ url_for('static', filename='Existing.css') }}"
 
   <!-- Right Column -->
   <div class="right-column">
+
     <!-- Top Row Card -->
-    <div class="card financial-overview">
+
+    <!-- Top Row Card -->
+<div class="card financial-overview">
+  <!-- Available Balance -->
+  <div class="card-section">
+    <h2>Available Balance</h2>
+    <p class="amount">$50,000</p>
+  </div>
+  
+  <!-- Daily Returns -->
+  <div class="card-section">
+    <h2>Daily Returns</h2>
+    <p class="percentage">+2.02%</p>
+    <p class="amount">+$2,000</p>
+  </div>
+
+  <!-- Total Returns -->
+  <div class="card-section">
+    <h2>Total Returns</h2>
+    <p class="percentage">+5.75%</p>
+    <p class="amount">+$5,000</p>
+  </div>
+</div>
+
+    <!-- <div class="card financial-overview">
+
       <div class="card-section">
-        <span class="icon">&#x24B8;</span> <!-- Placeholder for Equity icon -->
+        <span class="icon">&#x24B8;</span> 
         <h2>Equity</h2>
         <p class="amount">$50,000</p>
         <p class="description">Available balance</p>
       </div>
       <div class="divider"></div>
       <div class="card-section">
-        <p class="description">Margins used</p>
-        <p class="amount">0</p>
-        <p class="description">Account value</p>
-        <p class="amount">$50,000</p>
+        <p class="description">DailyReturn</p>
+        <p class="amount">+2.02%</p>
+        <p class="description">Total Gain</p>
+        <p class="amount">+$2,000</p>
       </div>
       <div class="divider"></div>
       <div class="card-section">
-        <span class="icon">&#x24B8;</span> <!-- Placeholder for Commodity icon -->
+        <span class="icon">&#x24B8;</span> 
         <h2>Commodity</h2>
         <p class="amount">$20,000</p>
         <p class="description">Available balance</p>
@@ -56,7 +82,7 @@ href="{{ url_for('static', filename='Existing.css') }}"
         <p class="description">Account value</p>
         <p class="amount">$4,000</p>
       </div>
-    </div>
+    </div> -->
   
 
     <!-- Middle Row Card -->
@@ -90,10 +116,37 @@ href="{{ url_for('static', filename='Existing.css') }}"
 
 
     <!-- Bottom Row Card -->
-    <div class="card">
-      <!-- Content -->
+<!-- Bottom Row Card -->
+<div class="card-bottom">
+  <div class="card-bottom-left">
+    <img src="{{ url_for('static', filename='images/Graph.png') }}" alt="Graph" style="width:100%; height:auto;">
+  </div>
+  <div class="card-bottom-right">
+    <!-- Model Controls -->
+    <div class="model-controls">
+      <h3>Modify Graph</h3>
+      <form id="model-controls-form">
+        <label for="stock-select">Select Stock:</label>
+        <select id="stock-select" name="stock">
+          <option value="apple">Apple</option>
+          <!-- Additional stock options can be added here -->
+        </select>
+
+        <label for="start-date">Start Date:</label>
+        <input type="date" id="start-date" name="start-date">
+
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" name="end-date">
+
+        <!-- Additional model controls can be added here -->
+
+        <button type="submit">Update Chart</button>
+      </form>
     </div>
   </div>
+</div>
+
+    
 </div>
 
 <div class="footer">

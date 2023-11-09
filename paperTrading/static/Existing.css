@@ -1,98 +1,94 @@
 * { 
-    box-sizing: border-box; 
+  box-sizing: border-box; 
 }
 body { 
-    font-family: Arial, sans-serif; 
-    margin: 0; 
-    padding: 0;
-    background-color: #f7f7f7; 
+  font-family: Arial, sans-serif; 
+  margin: 0; 
+  padding: 0;
+  background-color: #fff; 
 }
 .container { 
-    display: flex;
-    padding: 10px; 
+  display: flex;
+  padding: 10px; 
 }
 .left-column { 
-    width: 25%; 
-    padding: 10px; 
+  width: 25%; 
+  padding: 10px; 
 }
 .right-column { 
-    width: 75%; 
-    padding: 10px; 
+  width: 75%; 
+  padding: 10px; 
 }
 .card { 
-    background: #fff;
-    margin-bottom: 20px; 
-    padding: 20px; 
-    border-radius: 4px; 
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+  background: #fff;
+  margin-bottom: 20px; 
+  padding: 20px; 
+  border-radius: 4px; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
 }
-.card:not(:last-child) { 
-    margin-bottom: 20px; 
-}
-.card-header { 
-    margin-bottom: 20px; 
-}
-.card-content { 
-    margin-bottom: 20px; 
-}
+
 .footer { 
-    text-align: center; 
-    padding: 20px 0;
+  text-align: center; 
+  padding: 20px 0;
 }
-
-
-/* ... (rest of your CSS) ... */
-
-/* Adjustments for Financial Overview */
-/* ... (rest of your CSS) ... */
 
 /* Adjustments for Financial Overview */
 .financial-overview {
-    display: flex;
-    align-items: center; /* Align items vertically */
-    padding: 2px 20px; /* Minimal padding to make it less tall */
-    font-size: 0.8em; /* Smaller font size for all text in the card */
-  }
-  
-  .card-section {
-    flex-grow: 1;
-    text-align: center;
-    padding: 0 10px; /* Adjust padding as needed */
-  }
-  
-  .icon {
-    display: inline-block;
-    font-size: 18px; /* Adjust icon size as needed */
-    margin-right: 5px; /* Space between icon and text */
-    /* Replace with actual icons */
-  }
-  
-  .h2, .amount, .description {
-    margin: 2px 0; /* Smaller margins to decrease height */
-    line-height: 1.1; /* Tighter line height to decrease space between lines */
-  }
-  
-  .amount {
-    font-size: 1.4em; /* Larger font size for amount */
-    line-height: 1.1; /* Tighter line height for amount */
-  }
-  
-  .divider {
-    border-left: 1px solid #ccc;
-    height: 30px; /* Reduced height */
-    align-self: center; /* Ensure divider is centered */
-  }
-  
-  /* ... (rest of your CSS) ... */
-/* ... (rest of your CSS) ... */
+display: flex;
+justify-content: space-around;
+padding: 20px;
+background: #fff;
+margin-bottom: 20px;
+border-radius: 4px;
+box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-section {
+text-align: center;
+padding: 10px;
+}
+
+.card-section h2 {
+color: #666;
+font-size: 1.1em;
+margin-bottom: 0.5em;
+}
+
+.card-section .amount {
+color: #333;
+font-size: 1.8em;
+margin-bottom: 0.5em;
+}
+
+.card-section .percentage {
+color: #4CAF50;
+font-size: 1.2em;
+margin-bottom: 0.2em;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+.financial-overview {
+  flex-direction: column;
+}
+
+.card-section {
+  padding: 10px 0;
+}
+}
 
 .holdings-overview {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    font-size: 0.9em;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  font-size: 0.9em;
+}
+
+/* ... (rest of your CSS) ... */
+
+/* Add any additional styles you need below */
+
   
   .icon-and-text {
     display: flex;
@@ -161,7 +157,7 @@ h2 {
 .left-column {
     width: 25%; /* Adjust width as needed */
     padding: 10px;
-    background-color: #f7f7f7; /* Your background color */
+    background-color: #fff; /* Your background color */
     overflow-y: auto; /* Enables scrolling if there are many tickers */
   }
   
@@ -258,3 +254,56 @@ h2 {
   transition: background-color 1s;
   background-color: #ccc !important; 
 }
+
+.card-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-bottom-left {
+  width: 70%;
+  /* Adjust width as needed */
+}
+
+.card-bottom-right {
+  width: 30%;
+  /* Adjust width as needed */
+  padding: 20px;
+}
+
+.model-controls {
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 1px;
+}
+
+.model-controls h3 {
+  margin-bottom: 10px;
+}
+
+.model-controls form {
+  display: flex;
+  flex-direction: column;
+}
+
+.model-controls label {
+  margin-top: 10px;
+}
+
+.model-controls input,
+.model-controls select {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.model-controls button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
