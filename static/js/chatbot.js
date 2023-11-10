@@ -60,12 +60,12 @@ function askQuestion(){
             } else {
                 th.text("");
             }
-        }, 200);
+        }, 150);
     });
 
     $.ajax({
         type: 'POST',
-        url: '/',
+        url: '/chatbot',
         data: {'prompt': question},
         success: function (data) {
             clearInterval(dotAnimation);

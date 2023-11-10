@@ -54,7 +54,7 @@
 
 
       <div class="chatbot-button-container">
-        <a class="chatbot-button" href="#"><i class="fa-solid fa-robot" style="padding-right: 10px;"></i>LAUNCH
+        <a class="chatbot-button" href="{{ url_for('chatbot') }}"><i class="fa-solid fa-robot" style="padding-right: 10px;"></i>LAUNCH
           CHATBOT</a>
       </div>
 
@@ -71,15 +71,119 @@
     </section>
     <h2 class="top-dash">DASHBOARD</h2>
 
-    <section id="grid-container">
-      <div class="grid-item one"></div>
-      <div class="grid-item two"></div>
-    </section>
-    <section id="grid-container2">
-      <div class="grid-item one"></div>
-      <div class="grid-item two"></div>
-    </section>
+    <div class="dash-container">
+        <div class="dash-container-left">
+            <div class="search-container">
+                <img src="{{ url_for('static', filename='images/search.png') }}" class="search-icon">
+                <input type="text" class="search" id="chat-input" placeholder="Search">
+            </div>
+            <div id="stocks" class="stocks-container">
+
+            </div>
+        </div>
+        <div class="dash-container-right">
+            <div class="main-container">
+                <div class="content-container1">
+
+
+
+
+                    <div class="card financial-overview">
+                    <!-- Available Balance -->
+                    <div class="card-section">
+                        <h2>Available Balance</h2>
+                        <p class="amount">$50,000</p>
+                    </div>
+                    
+                    <!-- Daily Returns -->
+                    <div class="card-section">
+                        <h2>Daily Returns</h2>
+                        <p class="percentage-right">+2.02%</p>
+                        <p class="amount">+$2,000</p>
+                    </div>
+
+                    <!-- Total Returns -->
+                    <div class="card-section">
+                        <h2>Total Returns</h2>
+                        <p class="percentage-right">+5.75%</p>
+                        <p class="amount">+$5,000</p>
+                    </div>
+                    </div>
+                    
+
+                    <!-- Middle Row Card -->
+                    <div class="card holdings-overview">
+                    <div class="holdings-info" style="margin-right: 20px;">
+                        <div class="icon-and-text">
+                        <!-- Placeholder for Holdings icon -->
+                        <h2>Holdings (138)</h2>
+                        </div>
+                        <p class="amount">93.38k</p>
+                        <p class="description">P&L</p>
+                        <p class="percentage-right">22.51%</p>
+                    </div>
+                    <div class="holdings-chart">
+                        <!-- Insert the image for the bar chart -->
+                        <img src="{{ url_for('static', filename='images/Bar.png') }}" alt="Holdings Chart" style="width:90%; height:auto;">
+
+                    </div>
+                    <div class="holdings-stats">
+                        <div class="stat">
+                        <p class="description">Current value</p>
+                        <p class="amount">5.08L</p>
+                        </div>
+                        <div class="stat">
+                        <p class="description">Investment</p>
+                        <p class="amount">4.14L</p>
+                        </div>
+                    </div>
+                    </div>
+
+
+                        <!-- Bottom Row Card -->
+                    <!-- Bottom Row Card -->
+                    <div class="card-bottom">
+                    <div class="card-bottom-left">
+                        <img src="{{ url_for('static', filename='images/Graph.png') }}" alt="Graph" style="width:100%; height:auto;">
+                    </div>
+                    <div class="card-bottom-right">
+                        <!-- Model Controls -->
+                        <div class="model-controls">
+                        <h3>Modify Graph</h3>
+                        <form id="model-controls-form">
+                            <label for="stock-select">Select Stock:</label>
+                            <select id="stock-select" name="stock">
+                            <option value="apple">Apple</option>
+                            <!-- Additional stock options can be added here -->
+                            </select>
+
+                            <label for="start-date">Start Date:</label>
+                            <input type="date" id="start-date" name="start-date">
+
+                            <label for="end-date">End Date:</label>
+                            <input type="date" id="end-date" name="end-date">
+
+                            <!-- Additional model controls can be added here -->
+
+                            <button type="submit">Update Chart</button>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
   </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
 </body>
 
 </html>

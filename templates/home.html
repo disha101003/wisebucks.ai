@@ -13,7 +13,7 @@
 <body>
   <div class="header">
     <ul>
-      <li><a href="{{ url_for('home') }}">WISEBUCKS.AI</a></li>
+      <li><a href="{{ url_for('index') }}">WISEBUCKS.AI</a></li>
 
       <div class="dropdown">
         <li><a href="#">Features ▾</a></li>
@@ -89,7 +89,7 @@
     <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
       magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</h3>
     <div class="chatbot-button-container">
-      <a class="chatbot-button" href="#">EXPLORE CHATBOT</a>
+      <a class="chatbot-button" href="{{ url_for('chatbot') }}">EXPLORE CHATBOT</a>
     </div>
   </div>
 
