@@ -14,24 +14,111 @@
 
   <nav class="navbar">
     <a class="navbar-logo" href="#">WiseBucks.AI</a>
-    <a class="navbar-button" href="login.html">LOGIN</a>
+    <a class="navbar-button" href="{{ url_for('login') }}">LOGIN</a>
   </nav>
 
   <div class="login-container">
-    <h2>Sign Up</h2>
-    <form class="inline" style="border-color: #003260;">
-      <div class="input-icons">
-        <i class="fa-regular fa-envelope" style="color: #003260;"></i>
-        <input class="input-field" type="text" placeholder="Enter email address">
 
+    <section>
+      <div class="container">
+        <form>
 
+          <div class="step step-1 active">
+            <h2>Sign Up</h2>
+            <div class="form-group">
+              <div class="input-icons">
+                <i class="fa-regular fa-envelope" style="color: #003260;"></i>
+                <input type="text" id="input-field" type="text" placeholder="Enter email address">
+              </div>
+
+            </div>
+            <button type="button" class="next-btn">CONTINUE</button>
+          </div>
+
+          <div class="step step-2">
+            <h2>Welcome To WiseBucks.AI</h2>
+            <h3>To start, what's your name?</h3>
+            <div class="form-group">
+              <div class="input-icons">
+                <i class="fa-regular fa-user"></i>
+
+                <input type="text" id="email" name="email" placeholder="Name">
+              </div>
+            </div>
+
+            <button type="button" class="next-btn">CONTINUE</button>
+            <button type="button" class="previous-btn" style="background-color:#003260 ;">BACK</button>
+          </div>
+
+          <div class="step step-3">
+            <h2>Welcome To WiseBucks.AI</h2>
+            <h3>Next, create your password</h3>
+            <div class="form-group">
+              <div class="input-icons">
+                <i class="fa-solid fa-lock"></i>
+
+                <input type="text" id="email" name="email" placeholder="Password 8+ character">
+              </div>
+            </div>
+
+            <button type="button" class="next-btn">CONTINUE</button>
+            <button type="button" class="previous-btn" style="background-color:#003260 ;">BACK</button>
+          </div>
+
+          <div class="step step-4">
+            <h2>Welcome To WiseBucks.AI</h2>
+            <h3>Confirm your password</h3>
+            <div class="form-group">
+              <div class="input-icons">
+                <i class="fa-solid fa-lock"></i>
+
+                <input type="text" id="email" name="email" placeholder="Re-enter your password">
+              </div>
+            </div>
+
+            <button type="button" class="next-btn">CONTINUE</button>
+            <button type="button" class="previous-btn" style="background-color:#003260 ;">BACK</button>
+          </div>
+
+          <div class="step step-5">
+            <h2>Welcome To WiseBucks.AI</h2>
+            <h3>Lastly confirm your account information</h3>
+            <div class="form-group">
+              <div class="input-icons">
+                <i class="fa-regular fa-user"></i>
+
+                <input type="text" id="email" name="email" placeholder="Name">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-icons">
+                <i class="fa-regular fa-envelope"></i>
+
+                <input type="text" id="email" name="email" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-icons">
+                <i class="fa-solid fa-lock"></i>
+
+                <input type="text" id="email" name="email" placeholder="Password">
+              </div>
+            </div>
+
+            <button type="submit" class="submit-btn">CREATE ACCOUNT</button>
+            <button type="button" class="previous-btn" style="background-color:#003260 ;">BACK</button>
+
+          </div>
+
+        </form>
       </div>
-    </form>
+    </section>
 
-    <button class="login-button">CONTINUE</button>
-    <h5>Already have an account? <a href="login.html">LOGIN</a></h5>
+    <!-- <button class="login-button">CONTINUE</button> -->
+    <h5>Already have an account? <a href="{{ url_for('login') }}">LOGIN</a></h5>
     <button class="google-login-button"><i class="fab fa-google"></i> SIGN UP WITH GOOGLE</button>
   </div>
 </body>
+<script src="{{ url_for('static', filename='js/signup.js') }}"></script>
 
 </html>
