@@ -112,32 +112,37 @@
                     
 
                     <!-- Middle Row Card -->
-                    <div class="card holdings-overview">
-                    <div class="holdings-info" style="margin-right: 20px;">
-                        <div class="icon-and-text">
-                        <!-- Placeholder for Holdings icon -->
-                        <h2>Holdings (138)</h2>
-                        </div>
-                        <p class="amount">93.38k</p>
-                        <p class="description">P&L</p>
-                        <p class="percentage-right">22.51%</p>
-                    </div>
-                    <div class="holdings-chart">
-                        <!-- Insert the image for the bar chart -->
-                        <img src="{{ url_for('static', filename='images/Bar.png') }}" alt="Holdings Chart" style="width:90%; height:auto;">
+                    <!-- Middle Row Card -->
+<div class="card holdings-overview">
+  <!-- Holdings Section -->
+  <div class="holdings-section">
+      <div class="holdings-title">
+          <h2>Holdings (138)</h2>
+      </div>
+      <div class="holdings-chart">
+          <!-- Insert the image for the bar chart -->
+          <img src="{{ url_for('static', filename='images/Bar.png') }}" alt="Holdings Chart" style="width:90%; height:auto;">
+      </div>
+  </div>
 
-                    </div>
-                    <div class="holdings-stats">
-                        <div class="stat">
-                        <p class="description">Current value</p>
-                        <p class="amount">5.08L</p>
-                        </div>
-                        <div class="stat">
-                        <p class="description">Investment</p>
-                        <p class="amount">4.14L</p>
-                        </div>
-                    </div>
-                    </div>
+  <!-- Top Invested Companies Section -->
+  <div class="top-invested-companies">
+      <h3>Top Investments</h3>
+      <div class="company-row">
+          <span>Apple</span>
+          <span>$30,000</span>
+      </div>
+      <div class="company-row">
+          <span>Microsoft</span>
+          <span>$25,000</span>
+      </div>
+      <div class="company-row">
+          <span>Tesla</span>
+          <span>$20,000</span>
+      </div>
+  </div>
+</div>
+
 
 
                         <!-- Bottom Row Card -->

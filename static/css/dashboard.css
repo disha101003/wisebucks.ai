@@ -359,7 +359,7 @@ body {
 
 .content-container1 {
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 10px;
     width: 100%;
     height: 200px;
     /* background-color: yellow; */
@@ -587,14 +587,14 @@ h2 {
 }
 
 .card-bottom-left {
-    width: 70%;
-    /* Adjust width as needed */
+    margin-top: 20px; /* Adjust this value as needed to push the graph down */
 }
 
 .card-bottom-right {
     width: 30%;
     /* Adjust width as needed */
     padding: 20px;
+    margin-top: 20px;
 }
 
 .model-controls {
@@ -632,3 +632,44 @@ h2 {
     border-radius: 4px;
     cursor: pointer;
 }
+.holdings-overview {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align to top */
+    padding: 10px;
+    font-size: 0.9em;
+}
+
+.holdings-section {
+    width: 50%; /* Adjust based on your layout */
+}
+
+.holdings-title h2 {
+    margin-bottom: 5px; /* Space between the title and the image */
+}
+
+.top-invested-companies {
+    width: 50%; /* Adjust based on your layout */
+    padding-left: 10px; /* Spacing from the left side */
+}
+
+.top-invested-companies h3 {
+    margin-bottom: 10px; /* Space between the title and the rows */
+}
+
+.company-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0; /* Adjust padding as needed */
+    border-bottom: 1px solid #eaeaea; /* Separator for rows */
+}
+
+.company-row span:first-child {
+    font-weight: bold; /* Make company name bold */
+}
+
+.company-row span:last-child {
+    margin-left: auto; /* Push investment amount to the right */
+}
+
