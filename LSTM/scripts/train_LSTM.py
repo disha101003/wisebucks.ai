@@ -18,7 +18,28 @@ def load_data(file_path, symbol):
     data = pd.read_sql(query, connection)
 
     return data
-    
+
+def most_reecent_date(df):
+    return df.iloc[-1]['date']
+
+def most_recent_open(df):
+    return df.iloc[-1]['open']
+
+def most_recent_close(df):
+    return df.iloc[-1]['close']
+
+def most_recent_high(df):
+    return df.iloc[-1]['high']
+
+def most_recent_low(df):
+    return df.iloc[-1]['low']
+
+def most_recent_volume(df):
+    return df.iloc[-1]['volume']
+
+def most_recent_volatility(df):
+    return df.iloc[-1]['volatility']
+
 
 def preprocess_data(df):
     import joblib
@@ -45,7 +66,7 @@ def preprocess_data(df):
     X_scaled = x_scaler.fit_transform(X)
 
     # Save the feature scaler for this symbol
-    x_scaler_filename = f"./LSTM/models/{symbol}_x_scaler.save"
+    x_scaler_filename = f"./LSTM/scalers/{symbol}_x_scaler.save"
     joblib.dump(x_scaler, x_scaler_filename)
 
     return X_scaled, y_scaled
@@ -61,13 +82,13 @@ def prepare_lstm_input(X):
 def build_lstm_model(input_shape):
     model = Sequential()
     # must set return_sequence to False for last LSTM layer
-    model.add(LSTM(100, input_shape=input_shape, activation='tanh', return_sequences=True))
+    model.add(LSTM(100, input_shape=input_shape, activation='sigmoid', return_sequences=True))
     model.add(Dropout(0.2))
     model.add(LSTM(units=100,return_sequences=True))
     model.add(Dropout(0.4))
     model.add(LSTM(units=100,return_sequences=False))
     model.add(Dropout(0.2))
-    model.add(Dense(1, activation='sigmoid'))
+    model.add(Dense(1, activation='tanh'))
     model.compile(loss='mean_squared_error', optimizer='adam')
     return model
 
@@ -85,16 +106,16 @@ def load_model(model_path):
 
 if __name__ == "__main__":
 
-    model_output_text_file = './LSTM/models/model_output.txt'
+    model_output_text_file = './LSTM/outputs/model_output.txt'
 
     data_file_path = './atradebot.db'
-    epochs = 150
+    epochs = 100
     batch_size = 5
 
     # Get the list of stock symbols from the CSV
     stock_df = pd.read_csv('sp-500-index-10-29-2023.csv')
     #symbols = stock_df['Symbol'].tolist()
-    symbols = ['AAPL', 'AMZN', 'GOOG', 'TSLA']
+    symbols = ['AMZN', 'GOOG']
     
 
     dict_of_predictions = {}
@@ -130,9 +151,8 @@ if __name__ == "__main__":
 
         # Make a prediction for the next day's Close price
         predicted_scaled_close = model.predict(last_data_point)
-        print(f"PREDICTED SCALED CLOSE: {predicted_scaled_close}")
+        # print(f"PREDICTED SCALED CLOSE: {predicted_scaled_close}")
 
-        
         # Load the scaler used for training
         import joblib
         scaler_filename = f"./LSTM/scalers/{symbol}_y_scaler.save"
@@ -140,20 +160,42 @@ if __name__ == "__main__":
 
         # Reuse the same scaler used for scaling during training
         predicted_close = scaler.inverse_transform(predicted_scaled_close)
-        print(f"PREDICTED CLOSE: {predicted_close}")
-
+        print(f"PREDICTED CLOSE: {predicted_close[0][0]}")
 
         # Get the actual Close price for the next day
+        date = data_frame.iloc[-1]['date']
+        open_price = most_recent_open(data_frame)
         actual_close = data_frame.iloc[-1]['close']
         print(f"ACTUAL CLOSE: {actual_close}")
+        high_price = most_recent_high(data_frame)
+        low_price = most_recent_low(data_frame)
+        volume = most_recent_volume(data_frame)
+        volatility = most_recent_volatility(data_frame)
 
-        # Save the predicted and actual Close prices in a dictionary
-        dict_of_predictions[symbol] = [predicted_close[0][0], actual_close]
+        key = (symbol, date)
+        values = [open_price, actual_close, high_price, low_price, volume, volatility, predicted_close[0][0]]
 
-    # Save the dictionary of predictions to a txt file
-    with open(model_output_text_file, 'w') as f:
-        f.write(str(dict_of_predictions))
+        print(f"Percent error for {symbol}: {abs((actual_close - predicted_close[0][0]) / actual_close) * 100}")
 
-    print(f"Predictions saved to {model_output_text_file}")
+        dict_of_predictions[key] = values
+
+        # Write the predictions to a text file
+        # key is (symbol, date)
+        # values are [open, close, high, low, volume, volatility, predicted_close]
+        # key should be its own line
+        # values should be indented on next liens followed with the name of the value
+        with open(model_output_text_file, 'w') as f:
+            f.write(f"{key}\n")
+            f.write(f"    open: {open_price}\n")
+            f.write(f"    close: {actual_close}\n")
+            f.write(f"    high: {high_price}\n")
+            f.write(f"    low: {low_price}\n")
+            f.write(f"    volume: {volume}\n")
+            f.write(f"    volatility: {volatility}\n")
+            f.write(f"    predicted_close: {predicted_close[0][0]}\n\n")
+
     f.close()
+        
+
+
 
