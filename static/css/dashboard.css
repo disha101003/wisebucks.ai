@@ -3,13 +3,13 @@
 * {
   margin: 0;
   padding: 0;
-  
+
 }
 
 html,
 body {
   height: 100%;
-  
+
 }
 
 body {
@@ -45,13 +45,14 @@ body {
   padding: 0px 15px;
   margin-top: 50px;
 }
+
 .links {
   display: flex;
   align-items: center;
   padding: 7px;
 }
 
-.links-container h2{
+.links-container h2 {
   font-size: 15px;
   color: #003260;
   margin-top: 50px;
@@ -142,23 +143,55 @@ body {
   .title-container h1 {
     display: none;
   }
+
   .links span {
     display: none;
   }
+
   #sidebar {
     width: 75px;
   }
+
   #main-dashboard-content {
     margin-left: 75px;
   }
+
   .title-container {
     padding: 20px;
   }
 }
 
-.top-dash{
+.top-dash {
   color: #e8349c;
   font-size: 15px;
   padding-left: 6px;
   font-weight: 900;
+}
+
+
+.chatbot-button,
+.chatbot-button:visited {
+  padding: 10px 35px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #003260;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+}
+
+.chatbot-button:hover {
+  background: #e8349c;
+  color: #FFF;
+}
+
+.chatbot-button-container {
+  padding-top: 100px;
+}
+
+.vl {
+  border-left: 3px solid #e8349c;
+  height: 38px;
+  margin-left: 282px;
+  margin-top: -55px;
 }
