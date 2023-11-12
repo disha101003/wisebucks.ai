@@ -12,13 +12,15 @@
 
 <body>
   <section id="sidebar">
+    <a href="{{ url_for('index') }}" style="text-decoration: none; color: #003260;">
     <section class="title-container">
       <img src="{{ url_for('static', filename='images/logo.png') }}" width="40px" alt="logo" />
       <h1>WISEBUCK.AI</h1>
     </section>
+    </a>
     <section class="links-container">
       <h2>FEATURES</h2>
-      <div class="links" style="color:#e8349c;">
+      <div class="links active" style="color:#e8349c;">
         <div class="icon">
           <i class="fa-solid fa-object-group" style="color:#e8349c"></i>
         </div>
@@ -30,26 +32,26 @@
         <div class="icon">
           <i class="fas fa-chart-bar"></i>
         </div>
-        <span>Investment challenge</span>
+        <a href="{{ url_for('investment') }}"><span>Investment Challenge</span></a>
       </div>
       <div class="links">
         <div class="icon">
           <i class="fa-solid fa-file-lines"></i>
         </div>
-        <span>Paper trading</span>
+        <a href="{{ url_for('trading') }}"><span>Paper Trading</span></a>
       </div>
       <div class="links">
         <div class="icon">
           <i class="fa-solid fa-sack-dollar"></i>
         </div>
-        <span>WiseWealth</span>
+        <a href="{{ url_for('wisewealth') }}"><span>WiseWealth</span></a>
       </div>
       <h2>DOCUMENTATION</h2>
-      <div class="links">
+      <div class="links" style="margin-top: -7px;">
         <div class="icon">
           <i class="fa-brands fa-youtube"></i>
         </div>
-        <span>Tutorials</span>
+        <a href="#"><span>Tutorials</span></a>
       </div>
 
 

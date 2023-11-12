@@ -170,6 +170,7 @@ input:focus, input.form-control:focus {
 
 .dash {
     position: absolute;
+    top: 30%;
     display: flex;
     align-items: center;
     font-family: 'Inter', sans-serif !important;

@@ -12,31 +12,33 @@
 
 <body>
   <section id="sidebar">
+    <a href="{{ url_for('index') }}" style="text-decoration: none; color: #003260;">
     <section class="title-container">
       <img src="{{ url_for('static', filename='images/logo.png') }}" width="40px" alt="logo" />
       <h1>WISEBUCKS.AI</h1>
     </section>
+    </a>
     <section class="links-container">
       <h2>FEATURES</h2>
       <div class="links">
         <div class="icon">
           <i class="fa-solid fa-object-group"></i>
         </div>
-        <span>Dashboard</span>
+        <a href="{{ url_for('dashboard') }}"><span>Dashboard</span></a>
       </div>
       <div class="links">
         <div class="icon">
           <i class="fas fa-chart-bar"></i>
         </div>
-        <span>Investment challenge</span>
+        <a href="{{ url_for('investment') }}"><span>Investment Challenge</span></a>
       </div>
       <div class="links">
         <div class="icon">
-          <i class="fa-solid fa-object-group"></i>
+          <i class="fa-solid fa-file-lines"></i>
         </div>
-        <span>Paper Trading</span>
+        <a href="{{ url_for('trading') }}"><span>Paper Trading</span></a>
       </div>
-      <div class="links" style="color:#e8349c;">
+      <div class="links active" style="color:#e8349c;">
         <div class="icon">
           <i class="fa-solid fa-sack-dollar" style="color:#e8349c"></i>
         </div>
@@ -49,7 +51,7 @@
         <div class="icon">
           <i class="fa-brands fa-youtube"></i>
         </div>
-        <span>Tutorials</span>
+        <a href="#"><span>Tutorials</span></a>
       </div>
       <div class="chatbot-button-container">
         <a class="chatbot-button" href="#"><i class="fa-solid fa-robot" style="padding-right: 10px;"></i>LAUNCH

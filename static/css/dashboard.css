@@ -51,6 +51,10 @@ body {
   align-items: center;
   padding: 7px;
 }
+.links.active {
+    margin-top: -19px;
+    margin-bottom: 3px;
+}
 
 .links-container h2 {
   font-size: 15px;
@@ -70,6 +74,10 @@ body {
 
 .links span {
   padding: 15px 20px;
+}
+.links a {
+  text-decoration: none;
+  color: #003260;
 }
 
 #main-dashboard-content {
@@ -178,6 +186,7 @@ body {
   color: white;
   text-align: center;
   font-size: 15px;
+  transition: .3s;
 }
 
 .chatbot-button:hover {
@@ -186,6 +195,9 @@ body {
 }
 
 .chatbot-button-container {
+    position: absolute;
+    bottom: 40px;
+    left: 30px;
   padding-top: 100px;
 }
 

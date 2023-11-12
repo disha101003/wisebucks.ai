@@ -18,10 +18,10 @@
       <div class="dropdown">
         <li><a href="#">Features ▾</a></li>
         <div class="dropdown-content">
-          <a href="#">WiseBucks Chatbot</a>
-          <a href="#">Investment Challenge</a>
+          <a href="{{ url_for('chatbot') }}">WiseBucks Chatbot</a>
+          <a href="{{ url_for('investment') }}">Investment Challenge</a>
           <a href="#">Reward Base Investing</a>
-          <a href="#">Paper Trading</a>
+          <a href="{{ url_for('trading') }}">Paper Trading</a>
         </div>
       </div>
       <li><a href="#">About Us</a></li>
@@ -35,7 +35,7 @@
     <p>The Personal Assistant For Your Investment Journey</p>
 
     <div class="custom-button-container">
-      <a class="custom-button" href="#">GET STARTED</a>
+      <a class="custom-button" href="{{ url_for('dashboard') }}">GET STARTED</a>
     </div>
     <div class="login-container">
       <a class="login-button" href="{{ url_for('login') }}">LOGIN</a>
@@ -109,7 +109,7 @@
     <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
       magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</h3>
     <div class="chatbot-button-container">
-      <a class="chatbot-button" href="#">EXPLORE INVESTING</a>
+      <a class="chatbot-button" href="{{ url_for('investment') }}">EXPLORE INVESTING</a>
     </div>
   </div>
 
@@ -119,7 +119,7 @@
     <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
       magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi</h3>
     <div class="chatbot2-button-container">
-      <a class="chatbot2-button" href="#">EXPLORE TRADING</a>
+      <a class="chatbot2-button" href="{{ url_for('trading') }}">EXPLORE TRADING</a>
     </div>
   </div>
 
@@ -141,15 +141,15 @@
         <div class="footer-col">
           <h4>Features</h4>
           <ul>
-            <li><a href="#">Wisebuck Chatbot</a></li>
-            <li><a href="#">Investment Challenege</a></li>
+            <li><a href="{{ url_for('chatbot') }}">Wisebuck Chatbot</a></li>
+            <li><a href="{{ url_for('investment') }}">Investment Challenege</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4 style="color: inherit;">.</h4>
           <ul>
             <li><a href="#">Reward Base Investing</a></li>
-            <li><a href="#">Paper Trading</a></li>
+            <li><a href="{{ url_for('trading') }}">Paper Trading</a></li>
           </ul>
         </div>
         <div class="footer-col">
