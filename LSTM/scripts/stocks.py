@@ -9,7 +9,7 @@ import datetime
 
 def create_db():
     # Create database:
-    engine = db.create_engine('sqlite:///atradebot.db', echo=True)
+    engine = db.create_engine('sqlite:///data/atradebot.db', echo=True)
     connection = engine.connect()
     metadata = db.MetaData()
 
@@ -38,7 +38,7 @@ def create_db():
     return engine, connection, stocks
 
 def update_db(connection):
-    from LSTM.scripts.feature_engineering import generate_features
+    from feature_engineering import generate_features
 
     # Get the list of stock symbols from the CSV
     stock_df = pd.read_csv('sp-500-index-10-29-2023.csv')
@@ -52,6 +52,7 @@ def update_db(connection):
         query = f"SELECT MAX(date) FROM stocks WHERE symbol = '{symbol}'"
         result = connection.execute(text(query)).fetchone()
         most_recent_date = result[0]
+        print(f"Most recent date for {symbol} is {most_recent_date}")
         
         if most_recent_date is None:
             # If no data exists for this symbol, start from a fixed date (e.g., '2020-01-01')
@@ -64,7 +65,7 @@ def update_db(connection):
         if start_date <= today:
             try:
                 stock_info = yf.download(symbol, start=start_date, end=today)  # API call to create DataFrame
-                if not stock_info.empty:
+                if not stock_info.empty: # If the DataFrame is not empty
                     stock_info['symbol'] = symbol
                     stock_info['date'] = stock_info.index.strftime('%Y-%m-%d')
                     stock_info = stock_info[['symbol', 'date', 'Close', 'Volume', 'Open', 'High', 'Low']]
@@ -80,6 +81,7 @@ def update_db(connection):
                     print(f"Updated {symbol} data from {start_date} to {today}")
                 else:
                     print(f"No data available for {symbol} from {start_date} to {today}")
+                    print("Could be a weekend or holiday. Skipping.")
                     break
 
             except Exception as e:
