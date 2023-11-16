@@ -80,6 +80,7 @@ def prepare_lstm_input(X):
     return X_lstm
 
 def build_lstm_model(input_shape):
+    import keras
     model = Sequential()
     # must set return_sequence to False for last LSTM layer
     model.add(LSTM(100, input_shape=input_shape, activation='sigmoid', return_sequences=True))
@@ -89,7 +90,9 @@ def build_lstm_model(input_shape):
     model.add(LSTM(units=100,return_sequences=False))
     model.add(Dropout(0.2))
     model.add(Dense(1, activation='tanh'))
-    model.compile(loss='mean_squared_error', optimizer='adam')
+
+    optimizer = keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-08, decay=0.0)
+    model.compile(loss='mean_squared_error', optimizer=optimizer, metrics=['accuracy'])
     return model
 
 def train_lstm_model(model, X_train, y_train, epochs, batch_size):
@@ -108,7 +111,7 @@ if __name__ == "__main__":
 
     model_output_text_file = './LSTM/outputs/model_output.txt'
 
-    data_file_path = './atradebot.db'
+    data_file_path = 'data/atradebot.db'
     epochs = 100
     batch_size = 5
 
@@ -124,18 +127,19 @@ if __name__ == "__main__":
 
         data_frame = load_data(data_file_path, symbol).drop(['id'], axis=1)
 
-        X_scaled, y_scaled = preprocess_data(data_frame)
+        X_scaled, y_scaled = preprocess_data(data_frame) # drops ['symbol', 'close', 'date', 'quarter']
         X_lstm = prepare_lstm_input(X_scaled)
         
         X_train, X_test, y_train, y_test = train_test_split(X_lstm, y_scaled, test_size=0.2, shuffle=False)
+
 
         model = build_lstm_model(input_shape=(X_train.shape[1], X_train.shape[2]))
         history = train_lstm_model(model, X_train, y_train, epochs=epochs, batch_size=batch_size)
         print_model_summary(model)
 
         # print model accuracy
-        train_score = model.evaluate(X_train, y_train, verbose=0)
-        print('Train Score: %.2f MSE (%.2f RMSE)' % (train_score, np.sqrt(train_score)))
+        test_score = model.evaluate(X_test, y_test, verbose=0)
+        print('Test Score: %.2f MSE (%.2f RMSE)' % (test_score, np.sqrt(test_score)))
 
         # Save the trained model
         model.save(f'./LSTM/models/{symbol}_lstm_model.h5')

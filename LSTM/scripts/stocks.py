@@ -41,7 +41,7 @@ def update_db(connection):
     from feature_engineering import generate_features
 
     # Get the list of stock symbols from the CSV
-    stock_df = pd.read_csv('sp-500-index-10-29-2023.csv')
+    stock_df = pd.read_csv('data/sp-500-index-10-29-2023.csv')
     symbols = stock_df['Symbol'].tolist()
     
     # Specify today's date
@@ -81,8 +81,8 @@ def update_db(connection):
                     print(f"Updated {symbol} data from {start_date} to {today}")
                 else:
                     print(f"No data available for {symbol} from {start_date} to {today}")
-                    print("Could be a weekend or holiday. Skipping.")
-                    break
+                    print("Note: Could be a weekend or holiday. Skipping.")
+                    continue
 
             except Exception as e:
                 print(f"Could not update {symbol} data from {start_date} to {today}")
