@@ -25,7 +25,7 @@ def generate_features(df):
     # Fill missing values
     df['5_day_mean_close_price'] = df['5_day_mean_close_price'].fillna(0)
     df['5_day_mean_volume'] = df['5_day_mean_volume'].fillna(0)
-    df['volatility'] = df['volatility'].fillna()
+    df['volatility'] = df['volatility'].fillna(0)
     df['daily_return'] = df['daily_return'].fillna(0)
 
     # Calculate 5-day and 20-day exponential moving averages for closing price

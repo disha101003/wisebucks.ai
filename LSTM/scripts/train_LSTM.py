@@ -114,9 +114,9 @@ if __name__ == "__main__":
     batch_size = 5
 
     # Get the list of stock symbols from the CSV
-    stock_df = pd.read_csv('sp-500-index-10-29-2023.csv')
-    symbols = stock_df['Symbol'].tolist()
-    #symbols = ['AMZN', 'GOOG', 'AAPL'] to test with a few symbols
+    stock_df = pd.read_csv('data/sp-500-index-10-29-2023.csv')
+    #symbols = stock_df['Symbol'].tolist()
+    symbols = ['AMZN', 'GOOG', 'AAPL'] # to test with a few symbols
     
 
     dict_of_predictions = {}
