@@ -116,7 +116,7 @@ if __name__ == "__main__":
     # Get the list of stock symbols from the CSV
     stock_df = pd.read_csv('data/sp-500-index-10-29-2023.csv')
     #symbols = stock_df['Symbol'].tolist()
-    symbols = ['AMZN', 'GOOG', 'AAPL'] # to test with a few symbols
+    symbols = ['AMZN'] # to test with a few symbols
     
 
     dict_of_predictions = {}
@@ -130,8 +130,9 @@ if __name__ == "__main__":
         X_scaled, y_scaled = preprocess_data(data_frame) # drops ['symbol', 'close', 'date', 'quarter']
         X_lstm = prepare_lstm_input(X_scaled)
         
-        X_train, X_test, y_train, y_test = train_test_split(X_lstm, y_scaled, test_size=0.2, shuffle=False)
-
+        X_train, X_test, y_train, y_test = train_test_split(X_lstm, y_scaled, test_size=0.01, shuffle=False)
+        # X_train=X_scaled
+        # y_train=y_scaled
 
         model = build_lstm_model(input_shape=(X_train.shape[1], X_train.shape[2]))
         start_time = time.time()
