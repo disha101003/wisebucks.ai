@@ -6,6 +6,7 @@ import sqlalchemy as db
 from keras.models import Sequential
 from keras.layers import LSTM, Dense, Dropout
 from keras.models import load_model as keras_load_model  # Rename the imported function
+import time
 
 # Load data
 def load_data(file_path, symbol):
@@ -80,7 +81,6 @@ def prepare_lstm_input(X):
     return X_lstm
 
 def build_lstm_model(input_shape):
-    import keras
     model = Sequential()
     # must set return_sequence to False for last LSTM layer
     model.add(LSTM(100, input_shape=input_shape, activation='sigmoid', return_sequences=True))
@@ -90,9 +90,7 @@ def build_lstm_model(input_shape):
     model.add(LSTM(units=100,return_sequences=False))
     model.add(Dropout(0.2))
     model.add(Dense(1, activation='tanh'))
-
-    optimizer = keras.optimizers.RMSprop(lr=0.001, rho=0.9, epsilon=1e-08, decay=0.0)
-    model.compile(loss='mean_squared_error', optimizer=optimizer, metrics=['accuracy'])
+    model.compile(loss='mean_squared_error', optimizer='adam')
     return model
 
 def train_lstm_model(model, X_train, y_train, epochs, batch_size):
@@ -117,14 +115,16 @@ if __name__ == "__main__":
 
     # Get the list of stock symbols from the CSV
     stock_df = pd.read_csv('sp-500-index-10-29-2023.csv')
-    #symbols = stock_df['Symbol'].tolist()
-    symbols = ['AMZN', 'GOOG']
+    symbols = stock_df['Symbol'].tolist()
+    #symbols = ['AMZN', 'GOOG', 'AAPL'] to test with a few symbols
     
 
     dict_of_predictions = {}
 
     for symbol in symbols:
 
+        model_path = f'./LSTM/models/{symbol}_lstm_model.h5'
+        
         data_frame = load_data(data_file_path, symbol).drop(['id'], axis=1)
 
         X_scaled, y_scaled = preprocess_data(data_frame) # drops ['symbol', 'close', 'date', 'quarter']
@@ -134,8 +134,13 @@ if __name__ == "__main__":
 
 
         model = build_lstm_model(input_shape=(X_train.shape[1], X_train.shape[2]))
+        start_time = time.time()
         history = train_lstm_model(model, X_train, y_train, epochs=epochs, batch_size=batch_size)
-        print_model_summary(model)
+        end_time = time.time()
+        elapsed_time = end_time - start_time
+        print("Training time for {}: {:.2f} seconds".format(symbol, elapsed_time))
+
+        # print_model_summary(model)
 
         # print model accuracy
         test_score = model.evaluate(X_test, y_test, verbose=0)
@@ -182,24 +187,6 @@ if __name__ == "__main__":
         print(f"Percent error for {symbol}: {abs((actual_close - predicted_close[0][0]) / actual_close) * 100}")
 
         dict_of_predictions[key] = values
-
-        # Write the predictions to a text file
-        # key is (symbol, date)
-        # values are [open, close, high, low, volume, volatility, predicted_close]
-        # key should be its own line
-        # values should be indented on next liens followed with the name of the value
-        with open(model_output_text_file, 'w') as f:
-            f.write(f"{key}\n")
-            f.write(f"    open: {open_price}\n")
-            f.write(f"    close: {actual_close}\n")
-            f.write(f"    high: {high_price}\n")
-            f.write(f"    low: {low_price}\n")
-            f.write(f"    volume: {volume}\n")
-            f.write(f"    volatility: {volatility}\n")
-            f.write(f"    predicted_close: {predicted_close[0][0]}\n\n")
-
-    f.close()
-        
 
 
 
