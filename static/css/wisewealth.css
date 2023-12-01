@@ -127,7 +127,7 @@ body {
 
 #grid-container2 {
   display: grid;
-  grid-template-columns: 75% auto;
+  grid-template-columns: 55% auto;
   grid-gap: 25px;
   margin-top: 25px;
   padding-bottom: 25px;
