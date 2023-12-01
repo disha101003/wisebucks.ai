@@ -120,9 +120,15 @@ body {
 
 #grid-container {
   display: grid;
-  grid-template-columns: 50% auto;
+  grid-template-columns: 40% auto;
   grid-gap: 25px;
   margin-top: 80px;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#grid-container h5 {
+  font-weight: 100;
+  font-size: 20px;
 }
 
 #grid-container2 {
@@ -131,6 +137,18 @@ body {
   grid-gap: 25px;
   margin-top: 25px;
   padding-bottom: 25px;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#grid-container2 h1 {
+  font-weight: 100;
+  font-size: 20px;
+}
+
+#grid-container2 h2 {
+  color: #003260;
+  font-weight: 500;
+  font-size: 30px;
 }
 
 .grid-item {
