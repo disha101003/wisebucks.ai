@@ -17,7 +17,7 @@ def generate_features(df):
 
     # Calculate daily range and volatility
     df['daily_range'] = df['high'] - df['low']
-    df['volatility'] = df['daily_return'].rolling(5).std()
+    df['volatility'] = df['daily_return'].rolling(30).std()
 
     # Create a new column called Quarter
     df['quarter'] = pd.PeriodIndex(df['date'], freq='Q').astype(str)
