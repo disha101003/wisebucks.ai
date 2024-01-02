@@ -90,6 +90,7 @@ def build_lstm_model(input_shape):
     model.add(LSTM(units=100,return_sequences=False))
     model.add(Dropout(0.2))
     model.add(Dense(1, activation='tanh'))
+    model.add(Dense(1, activation='linear'))
     model.compile(loss='mean_squared_error', optimizer='adam')
     return model
 
@@ -116,7 +117,7 @@ if __name__ == "__main__":
     # Get the list of stock symbols from the CSV
     stock_df = pd.read_csv('data/sp-500-index-10-29-2023.csv')
     #symbols = stock_df['Symbol'].tolist()
-    symbols = ['GOOG'] # to test with a few symbols
+    symbols = ['TSLA'] # to test with a few symbols
     
 
     dict_of_predictions = {}
@@ -133,9 +134,6 @@ if __name__ == "__main__":
         X_train, X_test, y_train, y_test = train_test_split(X_lstm, y_scaled, test_size=0.01, shuffle=False)
         # X_train=X_scaled
         # y_train=y_scaled
-        # print("X_test")
-        # for i , j in zip(X_test, y_test):
-        #     print(i, " ", j )
 
         model = build_lstm_model(input_shape=(X_train.shape[1], X_train.shape[2]))
         start_time = time.time()
@@ -143,8 +141,6 @@ if __name__ == "__main__":
         end_time = time.time()
         elapsed_time = end_time - start_time
         print("Training time for {}: {:.2f} seconds".format(symbol, elapsed_time))
-
-        # print_model_summary(model)
 
         # print model accuracy
         test_score = model.evaluate(X_test, y_test, verbose=0)
@@ -158,47 +154,38 @@ if __name__ == "__main__":
         model = load_model(f'./LSTM/models/{symbol}_lstm_model.h5')
 
         # Get the last available data point for prediction
-        with open('predictions_output.txt', 'w') as file:
+        last_data_point = X_lstm[-1:]
+        last_data_point_date = data_frame.iloc[-1]['date']
+        print(f"Symbol: {symbol}, Last Data Point Date: {last_data_point_date}")
 
-            for i in range(10):
-                last_data_point = X_lstm[-i:]
-                last_data_point_date = data_frame.iloc[-i:]['date']
-                print(f"Symbol: {symbol}, Last Data Point Date: {last_data_point_date}")
+        # Make a prediction for the next day's Close price
+        predicted_scaled_close = model.predict(last_data_point)
+        # print(f"PREDICTED SCALED CLOSE: {predicted_scaled_close}")
 
-                # Make a prediction for the next day's Close price
-                predicted_scaled_close = model.predict(last_data_point)
-                # print(f"PREDICTED SCALED CLOSE: {predicted_scaled_close}")
+        # Load the scaler used for training
+        import joblib
+        scaler_filename = f"./LSTM/scalers/{symbol}_y_scaler.save"
+        scaler = joblib.load(scaler_filename)
 
-                # Load the scaler used for training
-                import joblib
-                scaler_filename = f"./LSTM/scalers/{symbol}_y_scaler.save"
-                scaler = joblib.load(scaler_filename)
+        # Reuse the same scaler used for scaling during training
+        predicted_close = scaler.inverse_transform(predicted_scaled_close)
+        print(f"PREDICTED CLOSE: {predicted_close[0][0]}")
 
-                # Reuse the same scaler used for scaling during training
-                predicted_close = scaler.inverse_transform(predicted_scaled_close)
-                print(f"PREDICTED CLOSE: {predicted_close[0][0]}")
+        # Get the actual Close price for the next day
+        date = data_frame.iloc[-1]['date']
+        open_price = most_recent_open(data_frame)
+        actual_close = data_frame.iloc[-1]['close']
+        print(f"ACTUAL CLOSE: {actual_close}")
+        high_price = most_recent_high(data_frame)
+        low_price = most_recent_low(data_frame)
+        volume = most_recent_volume(data_frame)
+        volatility = most_recent_volatility(data_frame)
 
-                # Get the actual Close price for the next day
-                date = data_frame.iloc[-i]['date']
-                open_price = most_recent_open(data_frame)
-                actual_close = data_frame.iloc[-i]['close']
-                print(f"ACTUAL CLOSE: {actual_close}")
-                high_price = most_recent_high(data_frame)
-                low_price = most_recent_low(data_frame)
-                volume = most_recent_volume(data_frame)
-                volatility = most_recent_volatility(data_frame)
+        key = (symbol, date)
+        values = [open_price, actual_close, high_price, low_price, volume, volatility, predicted_close[0][0]]
 
-                key = (symbol, date)
-                values = [open_price, actual_close, high_price, low_price, volume, volatility, predicted_close[0][0]]
+        print(f"Percent error for {symbol}: {abs((actual_close - predicted_close[0][0]) / actual_close) * 100}")
 
-                print(f"Percent error for {symbol}: {abs((actual_close - predicted_close[0][0]) / actual_close) * 100}")
-                file.write(f"Symbol: {symbol}, Last Data Point Date: {last_data_point_date}\n")
-                file.write(f"PREDICTED CLOSE: {predicted_close[0][0]}\n")
-                file.write(f"ACTUAL CLOSE: {actual_close}\n")
-                file.write(f"Percent error for {symbol}: {abs((actual_close - predicted_close[0][0]) / actual_close) * 100}\n")
-                file.write('\n')
-                dict_of_predictions[key] = values
-
-            
+        dict_of_predictions[key] = values
 
 
