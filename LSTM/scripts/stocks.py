@@ -9,7 +9,7 @@ import datetime
 
 def create_db():
     # Create database:
-    engine = db.create_engine('sqlite:///data/atradebot.db', echo=True)
+    engine = db.create_engine('sqlite:///./data/atradebot.db', echo=True)
     connection = engine.connect()
     metadata = db.MetaData()
 
@@ -41,7 +41,7 @@ def update_db(connection):
     from feature_engineering import generate_features
 
     # Get the list of stock symbols from the CSV
-    stock_df = pd.read_csv('data/sp-500-index-10-29-2023.csv')
+    stock_df = pd.read_csv('./data/sp-500-index-10-29-2023.csv')
     symbols = stock_df['Symbol'].tolist()
     
     # Specify today's date

@@ -48,7 +48,7 @@ def preprocess_data(df):
     # Define the features and target variables
     target = ['close']
     symbol = df['symbol'].unique()[0] # Get the symbol name
-    features = df.drop(['symbol', 'close', 'date', 'quarter'], axis=1).columns.tolist()
+    features = df.drop(['symbol', 'close', 'date', 'quarter', 'volatility'], axis=1).columns.tolist()
 
     # Create arrays for the features and the response variable
     X = df[features].values
@@ -73,6 +73,7 @@ def preprocess_data(df):
     return X_scaled, y_scaled
 
 def prepare_lstm_input(X):
+
     time_steps = 1
     batch_size = X.shape[0]  # Get the number of samples in the batch
     X_lstm = X.reshape(batch_size, time_steps, X.shape[1])
@@ -84,11 +85,11 @@ def build_lstm_model(input_shape):
     model = Sequential()
     # must set return_sequence to False for last LSTM layer
     model.add(LSTM(100, input_shape=input_shape, activation='sigmoid', return_sequences=True))
-    model.add(Dropout(0.2))
+    model.add(Dropout(0.05))
     model.add(LSTM(units=100,return_sequences=True))
     model.add(Dropout(0.4))
     model.add(LSTM(units=100,return_sequences=False))
-    model.add(Dropout(0.2))
+    model.add(Dropout(0.05))
     model.add(Dense(1, activation='tanh'))
     model.add(Dense(1, activation='linear'))
     model.compile(loss='mean_squared_error', optimizer='adam')
@@ -117,7 +118,7 @@ if __name__ == "__main__":
     # Get the list of stock symbols from the CSV
     stock_df = pd.read_csv('data/sp-500-index-10-29-2023.csv')
     #symbols = stock_df['Symbol'].tolist()
-    symbols = ['TSLA'] # to test with a few symbols
+    symbols = ['V'] # to test with a few symbols
     
 
     dict_of_predictions = {}
@@ -127,11 +128,13 @@ if __name__ == "__main__":
         model_path = f'./LSTM/models/{symbol}_lstm_model.h5'
         
         data_frame = load_data(data_file_path, symbol).drop(['id'], axis=1)
+        
 
         X_scaled, y_scaled = preprocess_data(data_frame) # drops ['symbol', 'close', 'date', 'quarter']
         X_lstm = prepare_lstm_input(X_scaled)
         
         X_train, X_test, y_train, y_test = train_test_split(X_lstm, y_scaled, test_size=0.01, shuffle=False)
+       
         # X_train=X_scaled
         # y_train=y_scaled
 

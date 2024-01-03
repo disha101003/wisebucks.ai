@@ -22,16 +22,20 @@ def generate_features(df):
     # Create a new column called Quarter
     df['quarter'] = pd.PeriodIndex(df['date'], freq='Q').astype(str)
 
+    # Calculate 5-day and 20-day exponential moving averages for closing price
+    df['EMA_Close_5'] = df['close'].ewm(span=5, adjust=False).mean()
+    df['EMA_Close_20'] = df['close'].ewm(span=20, adjust=False).mean()
+
     # Fill missing values
     df['5_day_mean_close_price'] = df['5_day_mean_close_price'].fillna(0)
     df['5_day_mean_volume'] = df['5_day_mean_volume'].fillna(0)
     df['volatility'] = df['volatility'].fillna(0)
     df['daily_return'] = df['daily_return'].fillna(0)
 
-    # Calculate 5-day and 20-day exponential moving averages for closing price
-    df['EMA_Close_5'] = df['close'].ewm(span=5, adjust=False).mean()
-    df['EMA_Close_20'] = df['close'].ewm(span=20, adjust=False).mean()
 
+
+
+    
     return df
 
 def feature_engineering(connection, symbol):
