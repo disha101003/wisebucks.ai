@@ -106,6 +106,10 @@ def load_model(model_path):
     model = keras_load_model(model_path)  # Use the imported Keras function
     return model
 
+import matplotlib.pyplot as plt
+
+
+
 
 if __name__ == "__main__":
 
@@ -118,7 +122,7 @@ if __name__ == "__main__":
     # Get the list of stock symbols from the CSV
     stock_df = pd.read_csv('data/sp-500-index-10-29-2023.csv')
     #symbols = stock_df['Symbol'].tolist()
-    symbols = ['V'] # to test with a few symbols
+    symbols = ['AAPL', 'AMZN', 'TSLA', 'GOOG', 'LULU', 'MSFT'] # to test with a few symbols
     
 
     dict_of_predictions = {}
@@ -191,4 +195,34 @@ if __name__ == "__main__":
 
         dict_of_predictions[key] = values
 
+        import matplotlib.pyplot as plt
+        # Get the most recent 100 days from the training data
+        recent_dates = data_frame.iloc[-100:]['date']
 
+        # Get the close prices for the most recent 100 days from the training data
+        recent_close_prices = data_frame.iloc[-100:]['close']
+
+        # Get all the dates from the testing data
+        testing_dates = data_frame.iloc[X_train.shape[0]:]['date']
+
+        # Get the close prices for the testing data
+        testing_close_prices = data_frame.iloc[X_train.shape[0]:]['close']
+
+        # get prediction for all the testing dates
+        predicted_close = model.predict(X_test)
+
+        # Reuse the same scaler used for scaling during training
+        predicted_close = scaler.inverse_transform(predicted_close)
+
+
+        # Plot the graph
+        plt.plot(recent_dates, recent_close_prices, label='Actual Close Price (Training Data)')
+        plt.plot(testing_dates, testing_close_prices, label='Actual Close Price (Testing Data)')
+        plt.plot(testing_dates, predicted_close, label='Predicted Close on Testing Data')
+        plt.xlabel('Dates')
+        plt.ylabel('Close Price')
+        plt.title('Close Price vs Dates')
+        plt.legend()
+        plt.savefig(f'./LSTM/outputs/{symbol}_close_price.png')
+        # clear the figure
+        plt.clf()
