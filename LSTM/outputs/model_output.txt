@@ -1,0 +1,365 @@
+Symbol: DXCM Date: 2024-01-04
+Actual Close Price: 121.83
+LSTM Predicted Close Price: 120.51
+Percent Error: 1.08%
+
+Symbol: INTC Date: 2024-01-04
+Actual Close Price: 46.87
+LSTM Predicted Close Price: 45.84
+Percent Error: 2.21%
+
+Symbol: COF Date: 2024-01-04
+Actual Close Price: 129.77
+Training time for COF: 73.04 seconds
+Test Score: 0.00 MSE (0.07 RMSE)
+LSTM Predicted Close Price: 131.54
+Percent Error: 1.37%
+
+Symbol: AMZN Date: 2024-01-04
+Actual Close Price: 144.57
+LSTM Predicted Close Price: 145.49
+Percent Error: 0.64%
+Training time for AMZN: 72.44 seconds
+Test Score: 0.00 MSE (0.06 RMSE)
+
+Symbol: SWK Date: 2024-01-04
+Actual Close Price: 94.32
+LSTM Predicted Close Price: 135.93
+Percent Error: 44.12%
+Training time for SWK: 72.89 seconds
+Test Score: 0.72 MSE (0.85 RMSE)
+
+Symbol: JNPR Date: 2024-01-04
+Actual Close Price: 29.77
+LSTM Predicted Close Price: 29.56
+Percent Error: 0.69%
+Training time for JNPR: 72.93 seconds
+Test Score: 0.01 MSE (0.10 RMSE)
+
+Symbol: CMG Date: 2024-01-04
+Actual Close Price: 2220.47
+LSTM Predicted Close Price: 1909.54
+Percent Error: 14.00%
+Test Score: 0.20 MSE (0.45 RMSE)
+
+Symbol: NEM Date: 2024-01-04
+Actual Close Price: 40.12
+LSTM Predicted Close Price: 54.74
+Percent Error: 36.44%
+Test Score: 1.52 MSE (1.23 RMSE)
+
+Symbol: ANET Date: 2024-01-04
+Actual Close Price: 230.56
+LSTM Predicted Close Price: 231.19
+Percent Error: 0.27%
+Test Score: 0.01 MSE (0.08 RMSE)
+
+Symbol: STX Date: 2024-01-04
+Actual Close Price: 80.77
+LSTM Predicted Close Price: 73.40
+Percent Error: 9.13%
+Test Score: 0.03 MSE (0.19 RMSE)
+
+Symbol: EMN Date: 2024-01-04
+Actual Close Price: 88.31
+LSTM Predicted Close Price: 91.64
+Percent Error: 3.77%
+Test Score: 0.02 MSE (0.13 RMSE)
+
+Symbol: AMD Date: 2024-01-04
+Actual Close Price: 136.01
+LSTM Predicted Close Price: 124.60
+Percent Error: 8.39%
+Test Score: 0.05 MSE (0.23 RMSE)
+
+Symbol: META Date: 2024-01-04
+Actual Close Price: 347.12
+LSTM Predicted Close Price: 325.55
+Percent Error: 6.21%
+Test Score: 0.03 MSE (0.16 RMSE)
+
+Symbol: FICO Date: 2024-01-04
+Actual Close Price: 1117.46
+LSTM Predicted Close Price: 1102.63
+Percent Error: 1.33%
+Test Score: 0.02 MSE (0.13 RMSE)
+
+Symbol: WDC Date: 2024-01-04
+Actual Close Price: 50.02
+LSTM Predicted Close Price: 49.26
+Percent Error: 1.53%
+Test Score: 0.00 MSE (0.07 RMSE)
+
+Symbol: MU Date: 2024-01-04
+Actual Close Price: 82.71
+LSTM Predicted Close Price: 73.07
+Percent Error: 11.65%
+Test Score: 0.14 MSE (0.37 RMSE)
+
+Symbol: STLD Date: 2024-01-04
+Actual Close Price: 116.46
+LSTM Predicted Close Price: 98.66
+Percent Error: 15.29%
+Test Score: 0.11 MSE (0.33 RMSE)
+Symbol: HCA Date: 2024-01-04
+Actual Close Price: 273.10
+LSTM Predicted Close Price: 236.67
+Percent Error: 13.34%
+Test Score: 0.13 MSE (0.37 RMSE)
+
+Symbol: MOH Date: 2024-01-04
+Actual Close Price: 378.74
+LSTM Predicted Close Price: 338.26
+Percent Error: 10.69%
+Test Score: 0.10 MSE (0.32 RMSE)
+
+Symbol: AVGO Date: 2024-01-04
+Actual Close Price: 1049.01
+LSTM Predicted Close Price: 909.50
+Percent Error: 13.30%
+Test Score: 0.43 MSE (0.65 RMSE)
+
+Symbol: SYK Date: 2024-01-04
+Actual Close Price: 298.05
+LSTM Predicted Close Price: 285.07
+Percent Error: 4.36%
+Test Score: 0.03 MSE (0.17 RMSE)
+
+Symbol: CMCSA Date: 2024-01-04
+Actual Close Price: 42.63
+LSTM Predicted Close Price: 44.84
+Percent Error: 5.19%
+Test Score: 0.02 MSE (0.15 RMSE)
+
+Symbol: KDP Date: 2024-01-04
+Actual Close Price: 32.37
+LSTM Predicted Close Price: 33.31
+Percent Error: 2.90%
+Test Score: 0.03 MSE (0.16 RMSE)
+Symbol: DLR Date: 2024-01-04
+Actual Close Price: 131.78
+LSTM Predicted Close Price: 133.34
+Percent Error: 1.18%
+Test Score: 0.00 MSE (0.05 RMSE)
+
+Symbol: ZBRA Date: 2024-01-04
+Actual Close Price: 252.97
+LSTM Predicted Close Price: 349.48
+Percent Error: 38.15%
+Test Score: 0.49 MSE (0.70 RMSE)
+
+Symbol: ROL Date: 2024-01-04
+Actual Close Price: 42.79
+LSTM Predicted Close Price: 41.91
+Percent Error: 2.05%
+Test Score: 0.01 MSE (0.09 RMSE)
+
+Symbol: TTWO Date: 2024-01-04
+Actual Close Price: 158.86
+LSTM Predicted Close Price: 146.64
+Percent Error: 7.69%
+Test Score: 0.06 MSE (0.24 RMSE)
+
+Symbol: IFF Date: 2024-01-04
+Actual Close Price: 79.55
+LSTM Predicted Close Price: 115.84
+Percent Error: 45.63%
+Test Score: 2.05 MSE (1.43 RMSE)
+
+Symbol: GWW Date: 2024-01-04
+Actual Close Price: 815.98
+LSTM Predicted Close Price: 802.59
+Percent Error: 1.64%
+Test Score: 0.01 MSE (0.08 RMSE)
+
+Symbol: CZR Date: 2024-01-04
+Actual Close Price: 44.91
+LSTM Predicted Close Price: 61.29
+Percent Error: 36.48%
+Test Score: 0.34 MSE (0.58 RMSE)
+
+Symbol: FTNT Date: 2024-01-04
+Actual Close Price: 58.39
+LSTM Predicted Close Price: 48.27
+Percent Error: 17.34%
+Test Score: 0.09 MSE (0.31 RMSE)
+
+Symbol: ON Date: 2024-01-04
+Actual Close Price: 76.20
+LSTM Predicted Close Price: 61.14
+Percent Error: 19.77%
+Test Score: 0.16 MSE (0.40 RMSE)
+
+Symbol: OTIS Date: 2024-01-04
+Actual Close Price: 87.68
+LSTM Predicted Close Price: 83.01
+Percent Error: 5.32%
+Test Score: 0.06 MSE (0.24 RMSE)
+
+Symbol: QCOM Date: 2024-01-04
+Actual Close Price: 136.17
+LSTM Predicted Close Price: 137.50
+Percent Error: 0.98%
+Test Score: 0.00 MSE (0.06 RMSE)
+
+Symbol: AAPL Date: 2024-01-04
+Actual Close Price: 181.91
+LSTM Predicted Close Price: 168.08
+Percent Error: 7.60%
+Test Score: 0.05 MSE (0.22 RMSE)
+
+Symbol: IP Date: 2024-01-04
+Actual Close Price: 36.47
+LSTM Predicted Close Price: 41.64
+Percent Error: 14.19%
+Test Score: 0.38 MSE (0.62 RMSE)
+
+Symbol: SNPS Date: 2024-01-04
+Actual Close Price: 490.18
+LSTM Predicted Close Price: 463.07
+Percent Error: 5.53%
+Test Score: 0.02 MSE (0.15 RMSE)
+
+Symbol: TSLA Date: 2024-01-04
+Actual Close Price: 237.93
+LSTM Predicted Close Price: 217.41
+Percent Error: 8.63%
+Test Score: 0.02 MSE (0.13 RMSE)
+
+Symbol: PSX Date: 2024-01-04
+Actual Close Price: 135.28
+LSTM Predicted Close Price: 127.96
+Percent Error: 5.41%
+Test Score: 0.08 MSE (0.28 RMSE)
+
+Symbol: ANSS Date: 2024-01-04
+Actual Close Price: 344.16
+LSTM Predicted Close Price: 336.80
+Percent Error: 2.14%
+Test Score: 0.03 MSE (0.18 RMSE)
+
+Symbol: PANW Date: 2024-01-04
+Actual Close Price: 283.30
+LSTM Predicted Close Price: 268.85
+Percent Error: 5.10%
+Test Score: 0.03 MSE (0.16 RMSE)
+
+Symbol: FAST Date: 2024-01-04
+Actual Close Price: 62.19
+LSTM Predicted Close Price: 59.99
+Percent Error: 3.55%
+Test Score: 0.03 MSE (0.17 RMSE)
+
+Symbol: LYB Date: 2024-01-04
+Actual Close Price: 96.09
+LSTM Predicted Close Price: 95.14
+Percent Error: 0.99%
+Test Score: 0.00 MSE (0.07 RMSE)
+
+Symbol: EG Date: 2024-01-04
+Actual Close Price: 367.69
+LSTM Predicted Close Price: 331.99
+Percent Error: 9.71%
+Test Score: 0.10 MSE (0.32 RMSE)
+
+Symbol: ORCL Date: 2024-01-04
+Actual Close Price: 102.59
+LSTM Predicted Close Price: 93.75
+Percent Error: 8.61%
+Test Score: 0.07 MSE (0.26 RMSE)
+
+Symbol: MSFT Date: 2024-01-04
+Actual Close Price: 367.94
+LSTM Predicted Close Price: 345.45
+Percent Error: 6.11%
+Test Score: 0.06 MSE (0.24 RMSE)
+
+Symbol: YUM Date: 2024-01-04
+Actual Close Price: 128.69
+LSTM Predicted Close Price: 120.84
+Percent Error: 6.10%
+Test Score: 0.07 MSE (0.27 RMSE)
+
+Symbol: NOW Date: 2024-01-04
+Actual Close Price: 671.87
+LSTM Predicted Close Price: 645.61
+Percent Error: 3.91%
+Test Score: 0.03 MSE (0.18 RMSE)
+
+Symbol: HON Date: 2024-01-04
+Actual Close Price: 204.90
+LSTM Predicted Close Price: 208.51
+Percent Error: 1.76%
+Test Score: 0.01 MSE (0.07 RMSE)
+
+Symbol: NTAP Date: 2024-01-04
+Actual Close Price: 86.06
+LSTM Predicted Close Price: 74.72
+Percent Error: 13.18%
+Test Score: 0.17 MSE (0.41 RMSE)
+
+Symbol: HPE Date: 2024-01-04
+Actual Close Price: 17.00
+LSTM Predicted Close Price: 16.55
+Percent Error: 2.66%
+Test Score: 0.02 MSE (0.13 RMSE)
+
+Symbol: HLT Date: 2024-01-04
+Actual Close Price: 178.75
+LSTM Predicted Close Price: 162.12
+Percent Error: 9.31%
+Test Score: 0.12 MSE (0.35 RMSE)
+
+Symbol: MPWR Date: 2024-01-04
+Actual Close Price: 571.06
+LSTM Predicted Close Price: 509.65
+Percent Error: 10.75%
+Test Score: 0.09 MSE (0.30 RMSE)
+
+Symbol: NVDA Date: 2024-01-04
+Actual Close Price: 479.98
+LSTM Predicted Close Price: 431.26
+Percent Error: 10.15%
+Test Score: 0.06 MSE (0.24 RMSE)
+
+Symbol: FDX Date: 2024-01-04
+Actual Close Price: 245.29
+LSTM Predicted Close Price: 241.29
+Percent Error: 1.63%
+Test Score: 0.01 MSE (0.10 RMSE)
+Symbol: HAL Date: 2024-01-04
+Actual Close Price: 35.78
+LSTM Predicted Close Price: 32.42
+Percent Error: 9.39%
+Test Score: 0.04 MSE (0.20 RMSE)
+
+Symbol: CSCO Date: 2024-01-04
+Actual Close Price: 50.08
+LSTM Predicted Close Price: 48.92
+Percent Error: 2.32%
+Test Score: 0.06 MSE (0.24 RMSE)
+
+Symbol: AMAT Date: 2024-01-04
+Actual Close Price: 149.31
+LSTM Predicted Close Price: 144.82
+Percent Error: 3.00%
+Test Score: 0.01 MSE (0.08 RMSE)
+
+Symbol: BA Date: 2024-01-04
+Actual Close Price: 244.94
+LSTM Predicted Close Price: 263.47
+Percent Error: 7.57%
+Test Score: 0.05 MSE (0.22 RMSE)
+
+Symbol: SYF Date: 2024-01-04
+Actual Close Price: 37.44
+LSTM Predicted Close Price: 34.76
+Percent Error: 7.16%
+Test Score: 0.06 MSE (0.24 RMSE)
+
+Symbol: ORLY Date: 2024-01-04
+Actual Close Price: 935.80
+LSTM Predicted Close Price: 926.18
+Percent Error: 1.03%
+Test Score: 0.00 MSE (0.07 RMSE)
+
