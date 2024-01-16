@@ -7,6 +7,8 @@ from keras.models import Sequential
 from keras.layers import LSTM, Dense, Dropout
 from keras.models import load_model as keras_load_model  # Rename the imported function
 import time
+import matplotlib.pyplot as plt
+
 
 # Load data
 def load_data(file_path, symbol):
@@ -84,14 +86,13 @@ def prepare_lstm_input(X):
 def build_lstm_model(input_shape):
     model = Sequential()
     # must set return_sequence to False for last LSTM layer
-    model.add(LSTM(100, input_shape=input_shape, activation='sigmoid', return_sequences=True))
+    model.add(LSTM(100, input_shape=input_shape, activation='tanh', return_sequences=True))
     model.add(Dropout(0.05))
     model.add(LSTM(units=100,return_sequences=True))
     model.add(Dropout(0.4))
     model.add(LSTM(units=100,return_sequences=False))
     model.add(Dropout(0.05))
-    model.add(Dense(1, activation='tanh'))
-    model.add(Dense(1, activation='linear'))
+    model.add(Dense(1, activation='relu'))
     model.compile(loss='mean_squared_error', optimizer='adam')
     return model
 
@@ -106,7 +107,6 @@ def load_model(model_path):
     model = keras_load_model(model_path)  # Use the imported Keras function
     return model
 
-import matplotlib.pyplot as plt
 
 
 
@@ -121,6 +121,7 @@ if __name__ == "__main__":
 
     # Get the list of stock symbols from the CSV
     stock_df = pd.read_csv('data/sp-500-index-10-29-2023.csv')
+    print(len(stock_df))
     #symbols = stock_df['Symbol'].tolist()
     symbols = ['AAPL', 'AMZN', 'TSLA', 'GOOG', 'LULU', 'MSFT'] # to test with a few symbols
     
@@ -214,7 +215,7 @@ if __name__ == "__main__":
         # Reuse the same scaler used for scaling during training
         predicted_close = scaler.inverse_transform(predicted_close)
 
-
+        """"
         # Plot the graph
         plt.plot(recent_dates, recent_close_prices, label='Actual Close Price (Training Data)')
         plt.plot(testing_dates, testing_close_prices, label='Actual Close Price (Testing Data)')
@@ -226,3 +227,4 @@ if __name__ == "__main__":
         plt.savefig(f'./LSTM/outputs/{symbol}_close_price.png')
         # clear the figure
         plt.clf()
+        """
