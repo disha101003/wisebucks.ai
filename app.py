@@ -30,7 +30,7 @@ def index():
 def chatbot():
     if request.method == 'POST':
         question = request.form['prompt']
-        template = """Financial Query: {question}
+        template = """Stock-related Query: {question}
     Response: """
         prompt = PromptTemplate(template=template, input_variables=["question"])
         llm = OpenAI()
