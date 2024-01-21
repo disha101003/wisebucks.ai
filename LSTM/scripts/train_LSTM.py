@@ -8,6 +8,8 @@ from keras.layers import LSTM, Dense, Dropout
 from keras.models import load_model as keras_load_model  # Rename the imported function
 import time
 import matplotlib.pyplot as plt
+from keras.initializers import GlorotUniform
+
 
 
 # Load data
@@ -48,9 +50,9 @@ def preprocess_data(df):
     import joblib
 
     # Define the features and target variables
-    target = ['close']
+    target = ['Target']
     symbol = df['symbol'].unique()[0] # Get the symbol name
-    features = df.drop(['symbol', 'close', 'date', 'quarter', 'volatility'], axis=1).columns.tolist()
+    features = df.drop(['symbol', 'close', 'date', 'quarter'], axis=1).columns.tolist()
 
     # Create arrays for the features and the response variable
     X = df[features].values
@@ -90,7 +92,7 @@ def build_lstm_model(input_shape):
     model.add(Dropout(0.05))
     model.add(LSTM(units=100,return_sequences=True))
     model.add(Dropout(0.4))
-    model.add(LSTM(units=100,return_sequences=False))
+    model.add(LSTM(units=50,return_sequences=False))
     model.add(Dropout(0.05))
     model.add(Dense(1, activation='relu'))
     model.compile(loss='mean_squared_error', optimizer='adam')
@@ -156,75 +158,3 @@ if __name__ == "__main__":
 
         # Save the trained model
         model.save(f'./LSTM/models/{symbol}_lstm_model.h5')
-
-        # Predict
-        # Load the trained LSTM model
-        model = load_model(f'./LSTM/models/{symbol}_lstm_model.h5')
-
-        # Get the last available data point for prediction
-        last_data_point = X_lstm[-1:]
-        last_data_point_date = data_frame.iloc[-1]['date']
-        print(f"Symbol: {symbol}, Last Data Point Date: {last_data_point_date}")
-
-        # Make a prediction for the next day's Close price
-        predicted_scaled_close = model.predict(last_data_point)
-        # print(f"PREDICTED SCALED CLOSE: {predicted_scaled_close}")
-
-        # Load the scaler used for training
-        import joblib
-        scaler_filename = f"./LSTM/scalers/{symbol}_y_scaler.save"
-        scaler = joblib.load(scaler_filename)
-
-        # Reuse the same scaler used for scaling during training
-        predicted_close = scaler.inverse_transform(predicted_scaled_close)
-        print(f"PREDICTED CLOSE: {predicted_close[0][0]}")
-
-        # Get the actual Close price for the next day
-        date = data_frame.iloc[-1]['date']
-        open_price = most_recent_open(data_frame)
-        actual_close = data_frame.iloc[-1]['close']
-        print(f"ACTUAL CLOSE: {actual_close}")
-        high_price = most_recent_high(data_frame)
-        low_price = most_recent_low(data_frame)
-        volume = most_recent_volume(data_frame)
-        volatility = most_recent_volatility(data_frame)
-
-        key = (symbol, date)
-        values = [open_price, actual_close, high_price, low_price, volume, volatility, predicted_close[0][0]]
-
-        print(f"Percent error for {symbol}: {abs((actual_close - predicted_close[0][0]) / actual_close) * 100}")
-
-        dict_of_predictions[key] = values
-
-        import matplotlib.pyplot as plt
-        # Get the most recent 100 days from the training data
-        recent_dates = data_frame.iloc[-100:]['date']
-
-        # Get the close prices for the most recent 100 days from the training data
-        recent_close_prices = data_frame.iloc[-100:]['close']
-
-        # Get all the dates from the testing data
-        testing_dates = data_frame.iloc[X_train.shape[0]:]['date']
-
-        # Get the close prices for the testing data
-        testing_close_prices = data_frame.iloc[X_train.shape[0]:]['close']
-
-        # get prediction for all the testing dates
-        predicted_close = model.predict(X_test)
-
-        # Reuse the same scaler used for scaling during training
-        predicted_close = scaler.inverse_transform(predicted_close)
-
-        """"
-        # Plot the graph
-        plt.plot(recent_dates, recent_close_prices, label='Actual Close Price (Training Data)')
-        plt.plot(testing_dates, testing_close_prices, label='Actual Close Price (Testing Data)')
-        plt.plot(testing_dates, predicted_close, label='Predicted Close on Testing Data')
-        plt.xlabel('Dates')
-        plt.ylabel('Close Price')
-        plt.title('Close Price vs Dates')
-        plt.legend()
-        plt.savefig(f'./LSTM/outputs/{symbol}_close_price.png')
-        # clear the figure
-        plt.clf()
-        """

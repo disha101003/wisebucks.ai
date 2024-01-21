@@ -9,7 +9,7 @@ import datetime
 
 def create_db():
     # Create database:
-    engine = db.create_engine('sqlite:///./data/atradebot.db', echo=True)
+    engine = db.create_engine('sqlite:////Users/anujthakkar/Documents/Purdue/Projects/wisebucks.ai/data/atradebot.db', echo=True)
     connection = engine.connect()
     metadata = db.MetaData()
 
@@ -19,6 +19,7 @@ def create_db():
         db.Column('symbol', db.String(255), nullable=False),  # Symbol is marked as non-nullable
         db.Column('date', db.Date(), nullable=False),  
         db.Column('close', db.Float(), nullable=True),
+        db.Column('adj_close', db.Float(), nullable=True),
         db.Column('volume', db.Integer(), nullable=True),
         db.Column('open', db.Float(), nullable=True),  
         db.Column('high', db.Float(), nullable=True),
@@ -30,7 +31,12 @@ def create_db():
         db.Column('volatility', db.Float(), nullable=True),
         db.Column('quarter', db.String(255), nullable=True),
         db.Column('EMA_Close_5', db.Float(), nullable=True),
-        db.Column('EMA_Close_20', db.Float(), nullable=True)
+        db.Column('EMA_Close_20', db.Float(), nullable=True),
+        db.Column('RSI', db.Float(), nullable=True),
+        db.Column('EMAF', db.Float(), nullable=True),
+        db.Column('EMAM', db.Float(), nullable=True),
+        db.Column('EMAS', db.Float(), nullable=True),
+        db.Column('Target', db.Float(), nullable=True),
     )
 
     # Create table in the database:
@@ -38,10 +44,12 @@ def create_db():
     return engine, connection, stocks
 
 def update_db(connection):
+    pd.options.mode.chained_assignment = None
+    pd.set_option('display.max_columns', 20)
     from feature_engineering import generate_features
 
     # Get the list of stock symbols from the CSV
-    stock_df = pd.read_csv('./data/sp-500-index-10-29-2023.csv')
+    stock_df = pd.read_csv('/Users/anujthakkar/Documents/Purdue/Projects/wisebucks.ai/data/sp-500-index-10-29-2023.csv')
     symbols = stock_df['Symbol'].tolist()
     
     # Specify today's date
@@ -65,11 +73,15 @@ def update_db(connection):
         if start_date <= today:
             try:
                 stock_info = yf.download(symbol, start=start_date, end=today)  # API call to create DataFrame
+                
                 if not stock_info.empty: # If the DataFrame is not empty
                     stock_info['symbol'] = symbol
                     stock_info['date'] = stock_info.index.strftime('%Y-%m-%d')
-                    stock_info = stock_info[['symbol', 'date', 'Close', 'Volume', 'Open', 'High', 'Low']]
-                    stock_info.columns = ['symbol', 'date', 'close', 'volume', 'open', 'high', 'low']
+                    stock_info = stock_info[['symbol', 'date', 'Close', 'Volume', 'Open', 'High', 'Low', 'Adj Close']]
+                    stock_info.rename(columns={'Close': 'close', 'Volume': 'volume', 'Open':'open', 
+                                                  'High': 'high', 'Low': 'low', 'Adj Close': 'adj_close'
+                                               }, inplace=True)
+
 
                     # Apply feature engineering to the data and add it to the DataFrame
                     stock_info = generate_features(stock_info)

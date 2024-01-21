@@ -1,5 +1,6 @@
 import sqlalchemy as db
 import pandas as pd
+import pandas_ta as ta
 
 # Function to create a database connection
 def connect_to_db():
@@ -12,12 +13,12 @@ def generate_features(df):
     df['daily_return'] = df['close'].pct_change(periods=1)
 
     # 5-day rolling averages for close price and volume
-    df['5_day_mean_close_price'] = df['close'].rolling(5).mean()
-    df['5_day_mean_volume'] = df['volume'].rolling(5).mean()
+    #df['5_day_mean_close_price'] = df['close'].rolling(5).mean()
+    #df['5_day_mean_volume'] = df['volume'].rolling(5).mean()
 
     # Calculate daily range and volatility
     df['daily_range'] = df['high'] - df['low']
-    df['volatility'] = df['daily_return'].rolling(30).std()
+    #df['volatility'] = df['daily_return'].rolling(30).std()
 
     # Create a new column called Quarter
     df['quarter'] = pd.PeriodIndex(df['date'], freq='Q').astype(str)
@@ -27,15 +28,21 @@ def generate_features(df):
     df['EMA_Close_20'] = df['close'].ewm(span=20, adjust=False).mean()
 
     # Fill missing values
-    df['5_day_mean_close_price'] = df['5_day_mean_close_price'].fillna(0)
-    df['5_day_mean_volume'] = df['5_day_mean_volume'].fillna(0)
-    df['volatility'] = df['volatility'].fillna(0)
+    #df['5_day_mean_close_price'] = df['5_day_mean_close_price'].fillna(0)
+    #df['5_day_mean_volume'] = df['5_day_mean_volume'].fillna(0)
+    #df['volatility'] = df['volatility'].fillna(0)
     df['daily_return'] = df['daily_return'].fillna(0)
 
+    # Adding indicators
+    df['RSI']=ta.rsi(df.close, length=15)
+    df['EMAF']=ta.ema(df.close, length=20)
+    df['EMAM']=ta.ema(df.close, length=100)
+    df['EMAS']=ta.ema(df.close, length=150)
 
 
+    df['Target'] = df['adj_close']-df.open
+    df['Target'] = df['target'].shift(-1)
 
-    
     return df
 
 def feature_engineering(connection, symbol):

@@ -7,6 +7,7 @@ from keras.models import Sequential
 from keras.layers import LSTM, Dense, Dropout
 from keras.models import load_model  # Rename the imported function
 from train_LSTM import *
+import joblib
 
 
 # Load data
@@ -59,7 +60,6 @@ if __name__ == "__main__":
         # print(f"PREDICTED SCALED CLOSE: {predicted_scaled_close}")
 
         # Load the scaler used for training
-        import joblib
         scaler_filename = f"./LSTM/scalers/{symbol}_y_scaler.save"
         scaler = joblib.load(scaler_filename)
 
@@ -83,3 +83,36 @@ if __name__ == "__main__":
         print(f"Percent error for {symbol}: {abs((actual_close - predicted_close[0][0]) / actual_close) * 100}")
 
         dict_of_predictions[key] = values
+
+        import matplotlib.pyplot as plt
+        # Get the most recent 100 days from the training data
+        recent_dates = data_frame.iloc[-100:]['date']
+
+        # Get the close prices for the most recent 100 days from the training data
+        recent_close_prices = data_frame.iloc[-100:]['close']
+
+        # Get all the dates from the testing data
+        testing_dates = data_frame.iloc[X_train.shape[0]:]['date']
+
+        # Get the close prices for the testing data
+        testing_close_prices = data_frame.iloc[X_train.shape[0]:]['close']
+
+        # get prediction for all the testing dates
+        predicted_close = model.predict(X_test)
+
+        # Reuse the same scaler used for scaling during training
+        predicted_close = scaler.inverse_transform(predicted_close)
+
+        """"
+        # Plot the graph
+        plt.plot(recent_dates, recent_close_prices, label='Actual Close Price (Training Data)')
+        plt.plot(testing_dates, testing_close_prices, label='Actual Close Price (Testing Data)')
+        plt.plot(testing_dates, predicted_close, label='Predicted Close on Testing Data')
+        plt.xlabel('Dates')
+        plt.ylabel('Close Price')
+        plt.title('Close Price vs Dates')
+        plt.legend()
+        plt.savefig(f'./LSTM/outputs/{symbol}_close_price.png')
+        # clear the figure
+        plt.clf()
+        """
