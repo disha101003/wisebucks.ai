@@ -74,7 +74,6 @@ def preprocess_data(df):
     x_scaler_filename = f"/Users/anujthakkar/Documents/Purdue/Projects/wisebucks.ai/LSTM/scalers/{symbol}_x_scaler.save"
     joblib.dump(x_scaler, x_scaler_filename)
 
-
     data_set_scaled = np.concatenate((X_scaled, y_scaled), axis=1)
 
     return X_scaled, y_scaled, data_set_scaled
@@ -128,12 +127,10 @@ def split_data(X, y, test_size, backcandles):
     splitlimit = int((1-test_size)*len(X))
     X_train, X_test = X[:splitlimit], X[splitlimit:]
     y_train, y_test = y[:splitlimit], y[splitlimit:]
-
     print(f'X_train shape: {X_train.shape}'
             f' X_test shape: {X_test.shape}')
     print(f'y_train shape: {y_train.shape}'
             f' y_test shape: {y_test.shape}')
-    
 
     return X_train, X_test, y_train, y_test, splitlimit, backcandles
 
@@ -167,6 +164,8 @@ if __name__ == "__main__":
     batch_size = 5 
     backcandles = 6
 
+    model_output_text_file = '/Users/anujthakkar/Documents/Purdue/Projects/wisebucks.ai/LSTM/outputs/newModelOutput.txt'
+
     # Get the list of stock symbols from the CSV
     stock_df = pd.read_csv('data/sp-500-index-10-29-2023.csv')
     symbols = stock_df['Symbol'].tolist()[0:2]
@@ -196,6 +195,7 @@ if __name__ == "__main__":
         y_pred = y_scaler.inverse_transform(y_pred)
         y_test = y_scaler.inverse_transform(y_test)
 
+        
 
         for i in range(len(y_pred)):    
             # get the value of the date from dates
