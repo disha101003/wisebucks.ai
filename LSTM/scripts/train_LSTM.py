@@ -50,9 +50,9 @@ def preprocess_data(df):
     import joblib
 
     # Define the features and target variables
-    target = ['Target']
+    target = ['TargetNextClose']
     symbol = df['symbol'].unique()[0] # Get the symbol name
-    features = df.drop(['symbol', 'close', 'date', 'quarter'], axis=1).columns.tolist()
+    features = df.drop(['symbol', 'close', 'date', 'quarter', 'volume'], axis=1).columns.tolist() # list
 
     # Create arrays for the features and the response variable
     X = df[features].values
@@ -146,6 +146,7 @@ if __name__ == "__main__":
         # y_train=y_scaled
 
         model = build_lstm_model(input_shape=(X_train.shape[1], X_train.shape[2]))
+        print(type(model))
         start_time = time.time()
         history = train_lstm_model(model, X_train, y_train, epochs=epochs, batch_size=batch_size)
         end_time = time.time()

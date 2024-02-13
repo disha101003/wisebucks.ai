@@ -12,24 +12,16 @@ def generate_features(df):
     # Calculate daily returns
     df['daily_return'] = df['close'].pct_change(periods=1)
 
-    # 5-day rolling averages for close price and volume
-    #df['5_day_mean_close_price'] = df['close'].rolling(5).mean()
-    #df['5_day_mean_volume'] = df['volume'].rolling(5).mean()
-
     # Calculate daily range and volatility
     df['daily_range'] = df['high'] - df['low']
-    #df['volatility'] = df['daily_return'].rolling(30).std()
 
     # Create a new column called Quarter
     df['quarter'] = pd.PeriodIndex(df['date'], freq='Q').astype(str)
 
     # Calculate 5-day and 20-day exponential moving averages for closing price
-    df['EMA_Close_5'] = df['close'].ewm(span=5, adjust=False).mean()
-    df['EMA_Close_20'] = df['close'].ewm(span=20, adjust=False).mean()
+    df['EMA_Close_5'] = df['close'].ewm(span=5).mean()
+    df['EMA_Close_20'] = df['close'].ewm(span=20).mean()
 
-    # Fill missing values
-    #df['5_day_mean_close_price'] = df['5_day_mean_close_price'].fillna(0)
-    #df['5_day_mean_volume'] = df['5_day_mean_volume'].fillna(0)
     #df['volatility'] = df['volatility'].fillna(0)
     df['daily_return'] = df['daily_return'].fillna(0)
 
@@ -39,9 +31,21 @@ def generate_features(df):
     df['EMAM']=ta.ema(df.close, length=100)
     df['EMAS']=ta.ema(df.close, length=150)
 
+    # for column RSI, fill the NaN values with that column's mean
+    df['RSI'] = df['RSI'].fillna(df['RSI'].mean())
 
-    df['Target'] = df['adj_close']-df.open
-    df['Target'] = df['target'].shift(-1)
+    # for column EMAF, fill the NaN values with that column's mean
+    df['EMAF'] = df['EMAF'].fillna(df['EMAF'].mean())
+
+    # for column EMAM, fill the NaN values with that column's mean
+    df['EMAM'] = df['EMAM'].fillna(df['EMAM'].mean())
+
+    # for column EMAS, fill the NaN values with that column's mean
+    df['EMAS'] = df['EMAS'].fillna(df['EMAS'].mean())
+
+
+
+    df['TargetNextClose'] = df['adj_close'].shift(-1) # adjusted close price for the next day
 
     return df
 

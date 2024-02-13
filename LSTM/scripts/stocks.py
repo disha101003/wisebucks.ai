@@ -25,18 +25,15 @@ def create_db():
         db.Column('high', db.Float(), nullable=True),
         db.Column('low', db.Float(), nullable=True),
         db.Column('daily_return', db.Float(), nullable=True),
-        db.Column('5_day_mean_close_price', db.Float(), nullable=True),
-        db.Column('5_day_mean_volume', db.Float(), nullable=True),
         db.Column('daily_range', db.Float(), nullable=True),
-        db.Column('volatility', db.Float(), nullable=True),
         db.Column('quarter', db.String(255), nullable=True),
         db.Column('EMA_Close_5', db.Float(), nullable=True),
         db.Column('EMA_Close_20', db.Float(), nullable=True),
-        db.Column('RSI', db.Float(), nullable=True),
-        db.Column('EMAF', db.Float(), nullable=True),
-        db.Column('EMAM', db.Float(), nullable=True),
-        db.Column('EMAS', db.Float(), nullable=True),
-        db.Column('Target', db.Float(), nullable=True),
+        db.Column('RSI', db.Float(), default=0),
+        db.Column('EMAF', db.Float(), default=0),
+        db.Column('EMAM', db.Float(), default=0),
+        db.Column('EMAS', db.Float(), default=0),
+        db.Column('TargetNextClose', db.Float())
     )
 
     # Create table in the database:
@@ -85,7 +82,6 @@ def update_db(connection):
 
                     # Apply feature engineering to the data and add it to the DataFrame
                     stock_info = generate_features(stock_info)
-                    print(stock_info)                    
                     
                     # Update the database with the new data
                     stock_info.to_sql('stocks', con=engine, if_exists='append', index=False, index_label='date')
@@ -99,6 +95,7 @@ def update_db(connection):
             except Exception as e:
                 print(f"Could not update {symbol} data from {start_date} to {today}")
                 print(e)
+
             time.sleep(1)
         else:
             print(f"Data for {symbol} is already up to date. Skipping.")
