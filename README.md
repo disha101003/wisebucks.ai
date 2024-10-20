@@ -30,4 +30,4 @@ https://github.com/user-attachments/assets/821877ae-5ef2-47b1-8b7c-63189970c35d
 
 
 
-Thank you Professor Eugenio Culurciello and Andre Chang for your guidance throughout this project!
+Thank you Professor Eugenio Culurciello and Sankalp Krishnan for your guidance throughout this project!
