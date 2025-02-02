@@ -22,6 +22,8 @@ This is a FinTech project, in which we are trying to make a comprehensive app / 
 4. This project proposed the use of yfinance api, trader workstation to get the required data, store it in SQL database and then retrieve data from this database for the purpose of training the data.
 5. In the beginning, the project proposes to use open source LLMs such as OpenAI’s API for its alpha model, but later on we plan to develop our own LLM model for the chatbot and sentiment analysis on news.
 
+Deployed Link: https://flask-production-0003.up.railway.app/
+
 
 The below is the demo for our project:
 
