@@ -1,0 +1,433 @@
+* {
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  font-family: ubuntu;
+}
+
+.header {
+  z-index: 1;
+  background: linear-gradient(-45deg, #003260, #0165c2, #04d1ff, black);
+  background-size: 400% 400%;
+  width: 100%;
+  height: 100vh;
+  animation: animate 15s ease infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 86%, 70% 96%, 30% 96%, 0 86%);
+}
+
+.header ul {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.header ul li {
+  display: inline-block;
+  padding: 40px 15px;
+}
+
+.header ul li a {
+  text-decoration: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 18px;
+  padding: 5px 10px;
+}
+
+.header ul li a:hover {
+  text-decoration: underline;
+}
+
+.header h2 {
+  text-align: center;
+  color: #fff;
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.header h4 {
+  text-align: center;
+  color: #fff;
+  font-size: 40px;
+  margin-top: 15%;
+}
+
+.header p {
+  text-align: center;
+  font-size: 18px;
+  width: 35%;
+  margin: auto;
+  color: #fff;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 5%;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: #0165c2;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #f1f1f1
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+
+@keyframes animate {
+  0% {
+    background-position: 0 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+
+.custom-button,
+.custom-button:visited {
+  padding: 10px 45px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #003260;
+  justify-content: center;
+  text-align: center;
+  /* margin-left: 615px; */
+  font-size: 25px;
+}
+
+.custom-button:hover {
+  background: #e8349c;
+  color: #FFF;
+}
+
+.custom-button-container {
+  justify-content: center;
+  text-align: center;
+}
+
+.login-container {
+  margin: 30px;
+  justify-content: center;
+  text-align: center;
+}
+
+.login-button,
+.login-button:visited {
+  text-decoration: none;
+  background-color: inherit;
+  color: white;
+  justify-content: center;
+  text-align: center;
+  /* margin-left: 615px; */
+  font-size: 25px;
+}
+
+.login-button:hover {
+  text-decoration: underline;
+}
+
+
+.mission {
+  background-color: white;
+  text-align: center;
+  padding: 10px 15px;
+  margin-top: 100px;
+}
+
+.mission h1 {
+  color: #0165c2;
+  font-size: 50px;
+
+}
+
+.mission h2 {
+  color: black;
+  padding-top: 60px;
+  padding-left: 150px;
+  padding-right: 150px;
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.row {
+  margin: 40px;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+img {
+  max-width: 25%;
+  max-height: 15%;
+  float: left;
+  margin-top: 60px;
+}
+
+.image-text {
+  font-size: 25px;
+  padding-left: 20px;
+  padding-top: 20%;
+  float: left;
+  color: black;
+}
+
+.chat-box {
+  background-color: #083464;
+  padding-top: 150px;
+  padding-bottom: 100px;
+}
+
+.chat-box h2 {
+  color: #e19a34;
+  text-align: left;
+  margin-left: 700px;
+  font-size: 30px;
+}
+
+.chat-box h1 {
+  color: white;
+  font-size: 50px;
+  text-align: left;
+  margin-left: 700px;
+  padding-right: 130px;
+
+}
+
+
+.chat-box h3 {
+  color: white;
+  font-size: 20px;
+  text-align: left;
+  margin-left: 700px;
+  padding-top: 35px;
+  padding-right: 100px;
+  padding-bottom: 50px;
+  line-height: 30px;
+  font-weight: 100;
+}
+
+
+.chatbot-button,
+.chatbot-button:visited {
+  padding: 10px 45px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #003260;
+  justify-content: center;
+  text-align: center;
+  font-size: 25px;
+}
+
+.chatbot-button:hover {
+  background: #e8349c;
+  color: #FFF;
+}
+
+.chatbot-button-container {
+  text-align: left;
+  margin-left: 700px;
+}
+
+
+.chat-box2 {
+  background-color: white;
+  padding-top: 100px;
+  padding-bottom: 100px;
+
+}
+
+.chat-box2 h2 {
+  color: hotpink;
+  text-align: left;
+  margin-left: 300px;
+  font-size: 30px;
+  padding-right: 800px;
+
+}
+
+.chat-box2 h1 {
+  color: #0165c2;
+  font-size: 50px;
+  text-align: left;
+  margin-left: 300px;
+  padding-right: 600px;
+
+}
+
+
+.chat-box2 h3 {
+  color: black;
+  font-size: 20px;
+  text-align: left;
+  margin-left: 300px;
+  padding-top: 35px;
+  padding-right: 500px;
+  padding-bottom: 50px;
+  line-height: 30px;
+  font-weight: 100;
+}
+
+
+.chatbot2-button,
+.chatbot2-button:visited {
+  padding: 10px 45px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: #003260;
+  color: white;
+  justify-content: center;
+  text-align: center;
+  font-size: 25px;
+}
+
+.chatbot2-button:hover {
+  background: #e8349c;
+  color: white;
+}
+
+.chatbot2-button-container {
+  text-align: left;
+  margin-left: 300px;
+}
+
+.footer {
+  background-color: #003260;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  padding: 50px 0;
+}
+
+.container {
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul {
+  list-style: none;
+}
+
+.footer-col {
+  width: 12%;
+  padding: 0 15px;
+}
+
+.footer-col h4 {
+  font-size: 18px;
+  color: white;
+  text-transform: capitalize;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.footer-col ul li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.footer-col ul li a:hover {
+  padding-left: 8px;
+}
+
+.footer-col socials a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  margin: 0 10px 10px 0;
+  text-align: center;
+  line-height: 40px;
+  color: white;
+}
+
+.footer-button,
+.footer-button:visited {
+  padding: 10px 35px;
+  text-decoration: none;
+  border-radius: 5px;
+  background-color: white;
+  color: #003260;
+  justify-content: center;
+  text-align: center;
+  font-size: 15px;
+}
+
+.footer-button:hover {
+  background: #e8349c;
+  color: white;
+}
+
+.footer-button-container {
+  text-align: center;
+}
+
+.footer-col img {
+  height: max-content;
+  width: max-content;
+}

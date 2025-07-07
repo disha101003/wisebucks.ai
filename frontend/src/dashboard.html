@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Dashboard</title>
+  <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"
+    type="text/css" />
+</head>
+
+<body>
+  <section id="sidebar">
+    <a href="{{ url_for('index') }}" style="text-decoration: none; color: #003260;">
+    <section class="title-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" width="40px" alt="logo" />
+      <h1>WISEBUCK.AI</h1>
+    </section>
+    </a>
+    <section class="links-container">
+      <h2>FEATURES</h2>
+      <div class="links active" style="color:#e8349c;">
+        <div class="icon">
+          <i class="fa-solid fa-object-group" style="color:#e8349c"></i>
+        </div>
+        <span style=>Dashboard</span>
+
+      </div>
+      <div class="vl"></div>
+      <div class="links">
+        <div class="icon">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <a href="{{ url_for('investment') }}"><span>Investment Challenge</span></a>
+      </div>
+      <div class="links">
+        <div class="icon">
+          <i class="fa-solid fa-file-lines"></i>
+        </div>
+        <a href="{{ url_for('trading') }}"><span>Paper Trading</span></a>
+      </div>
+      <div class="links">
+        <div class="icon">
+          <i class="fa-solid fa-sack-dollar"></i>
+        </div>
+        <a href="{{ url_for('wisewealth') }}"><span>WiseWealth</span></a>
+      </div>
+      <h2>DOCUMENTATION</h2>
+      <div class="links" style="margin-top: -7px;">
+        <div class="icon">
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+        <a href="#"><span>Tutorials</span></a>
+      </div>
+
+
+      <div class="chatbot-button-container">
+        <a class="chatbot-button" href="{{ url_for('chatbot') }}"><i class="fa-solid fa-robot" style="padding-right: 10px;"></i>LAUNCH
+          CHATBOT</a>
+      </div>
+
+    </section>
+
+  </section>
+  <section id="main-dashboard-content">
+    <section id="top-section">
+      <h1 id="welcome-title">Hello, Sally Norman</h1>
+      <div class="action-icons">
+        <div class="action-icon-one"></div>
+        <span style="font-size: 30px; padding-left: 10px;">▾</span>
+      </div>
+    </section>
+    <h2 class="top-dash">DASHBOARD</h2>
+
+    <div class="dash-container">
+        <div class="dash-container-left">
+            <div class="search-container">
+                <img src="{{ url_for('static', filename='images/search.png') }}" class="search-icon">
+                <input type="text" class="search" id="chat-input" placeholder="Search">
+            </div>
+            <div id="stocks" class="stocks-container">
+
+            </div>
+        </div>
+        <div class="dash-container-right">
+            <div class="main-container">
+                <div class="content-container1">
+
+
+
+
+                    <div class="card financial-overview">
+                    <!-- Available Balance -->
+                    <div class="card-section">
+                        <h2>Available Balance</h2>
+                        <p class="amount">$50,000</p>
+                    </div>
+                    
+                    <!-- Daily Returns -->
+                    <div class="card-section">
+                        <h2>Daily Returns</h2>
+                        <p class="percentage-right">+2.02%</p>
+                        <p class="amount">+$2,000</p>
+                    </div>
+
+                    <!-- Total Returns -->
+                    <div class="card-section">
+                        <h2>Total Returns</h2>
+                        <p class="percentage-right">+5.75%</p>
+                        <p class="amount">+$5,000</p>
+                    </div>
+                    </div>
+                    
+
+                    <!-- Middle Row Card -->
+                    <!-- Middle Row Card -->
+<div class="card holdings-overview">
+  <!-- Holdings Section -->
+  <div class="holdings-section">
+      <div class="holdings-title">
+          <h2>Holdings (138)</h2>
+      </div>
+      <div class="holdings-chart">
+          <!-- Insert the image for the bar chart -->
+          <img src="{{ url_for('static', filename='images/Bar.png') }}" alt="Holdings Chart" style="width:90%; height:auto;">
+      </div>
+  </div>
+
+  <!-- Top Invested Companies Section -->
+  <div class="top-invested-companies">
+      <h3>Top Investments</h3>
+      <div class="company-row">
+          <span>Apple</span>
+          <span>$30,000</span>
+      </div>
+      <div class="company-row">
+          <span>Microsoft</span>
+          <span>$25,000</span>
+      </div>
+      <div class="company-row">
+          <span>Tesla</span>
+          <span>$20,000</span>
+      </div>
+  </div>
+</div>
+
+
+
+                        <!-- Bottom Row Card -->
+                    <!-- Bottom Row Card -->
+                    <div class="card-bottom">
+                    <div class="card-bottom-left">
+                        <img src="{{ url_for('static', filename='images/Graph.png') }}" alt="Graph" style="width:100%; height:auto;">
+                    </div>
+                    <div class="card-bottom-right">
+                        <!-- Model Controls -->
+                        <div class="model-controls">
+                        <h3>Modify Graph</h3>
+                        <form id="model-controls-form">
+                            <label for="stock-select">Select Stock:</label>
+                            <select id="stock-select" name="stock">
+                            <option value="apple">Apple</option>
+                            <!-- Additional stock options can be added here -->
+                            </select>
+
+                            <label for="start-date">Start Date:</label>
+                            <input type="date" id="start-date" name="start-date">
+
+                            <label for="end-date">End Date:</label>
+                            <input type="date" id="end-date" name="end-date">
+
+                            <!-- Additional model controls can be added here -->
+
+                            <button type="submit">Update Chart</button>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+  </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+
+</body>
+
+</html>

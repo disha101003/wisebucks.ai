@@ -194,14 +194,17 @@ body {
   position: absolute;
   bottom: 40px;
   left: 30px;
-  padding-top: 100px;
 }
 
-.vl {
-  border-left: 3px solid #e8349c;
-  height: 38px;
-  margin-left: 282px;
-  margin-top: -55px;
+/* Fix image paths for arrows */
+.stock-arrow-green {
+  background-image: url("./images/arrow-green.png");
+}
+.stock-arrow-red {
+  background-image: url("./images/arrow-red.png");
+}
+.stock-arrow-dash {
+  background-image: url("./images/arrow-dash.png");
 }
 
 .dash-container {
@@ -295,18 +298,6 @@ body {
   align-self: center;
   margin: 0 auto;
   margin-right: 0;
-}
-
-.stock-arrow-green {
-  content: url("../images/arrow-green.png");
-}
-
-.stock-arrow-red {
-  content: url("../images/arrow-red.png");
-}
-
-.stock-arrow-dash {
-  content: url("../images/arrow-dash.png");
 }
 
 .stock-stock {
@@ -465,8 +456,7 @@ body {
   /* Placeholder styles for the bar chart */
   height: 50px;
   width: 100%;
-  background-image: url("../images/colorful-bar-chart.png");
-  /* Replace with actual path */
+  /* background-image removed */
   background-size: cover;
 }
 

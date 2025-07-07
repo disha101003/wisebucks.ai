@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>WiseWealth</title>
+  <link href="{{ url_for('static', filename='css/wisewealth.css') }}" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"
+    type="text/css" />
+</head>
+
+<body>
+  <section id="sidebar">
+    <a href="{{ url_for('index') }}" style="text-decoration: none; color: #003260;">
+    <section class="title-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" width="40px" alt="logo" />
+      <h1>WISEBUCKS.AI</h1>
+    </section>
+    </a>
+    <section class="links-container">
+      <h2>FEATURES</h2>
+      <div class="links">
+        <div class="icon">
+          <i class="fa-solid fa-object-group"></i>
+        </div>
+        <a href="{{ url_for('dashboard') }}"><span>Dashboard</span></a>
+      </div>
+      <div class="links">
+        <div class="icon">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <a href="{{ url_for('investment') }}"><span>Investment Challenge</span></a>
+      </div>
+      <div class="links">
+        <div class="icon">
+          <i class="fa-solid fa-file-lines"></i>
+        </div>
+        <a href="{{ url_for('trading') }}"><span>Paper Trading</span></a>
+      </div>
+      <div class="links active" style="color:#e8349c;">
+        <div class="icon">
+          <i class="fa-solid fa-sack-dollar" style="color:#e8349c"></i>
+        </div>
+        <span style=>WiseWealth</span>
+
+      </div>
+      <div class="vl"></div>
+      <h2>DOCUMENTATION</h2>
+      <div class="links">
+        <div class="icon">
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+        <a href="#"><span>Tutorials</span></a>
+      </div>
+      <div class="chatbot-button-container">
+        <a class="chatbot-button" href="#"><i class="fa-solid fa-robot" style="padding-right: 10px;"></i>LAUNCH
+          CHATBOT</a>
+      </div>
+    </section>
+  </section>
+  <section id="main-dashboard-content">
+    <section id="top-section">
+      <h1 id="welcome-title">Hello, Sally Norman</h1>
+      <div class="action-icons">
+        <div class="action-icon-one"></div>
+        <span style="font-size: 30px; padding-left: 10px;">▾</span>
+      </div>
+    </section>
+    <h2 class="top-dash">WISEWEALTH</h2>
+    
+    <section id="grid-container">
+      <div class="grid-item one">
+        <img src="graph.png" style="width:500px; height:300px">
+      </div>
+      <div class="grid-item two">
+        <h5 style="background-color: rgb(93, 232, 58); font-weight: 500;">Positive Sentiment (9.8/10)</h5>
+        <h5>"NVIDIA (NASDAQ: NVDA) reported a record revenue of $18.12 billion for the third quarter,
+           up 206% from a year ago and up 34% from the previous quarter."</h5>
+        <br><br>
+        <h5 style="background-color: rgb(200, 81, 81); font-weight: 500;">Negative Sentiment (2.2/10)</h5>
+        <h5>"US FDA flags a new problem with Philips machines, causing shares to fall".</h5>
+        <br><br>
+        <h5 style="background-color: rgb(136, 210, 136); font-weight: 500;">Positive Sentiment (7.5/10)</h5>
+        <h5>"GM surges after stock buyback, dividend announcement": Wall Street's top analyst calls".</h5>
+           
+      </div>
+    </section>
+    <section id="grid-container2">
+      <div class="grid-item one">
+        <h2>Why buy AAPL for the next 3 months:</h2>
+        <br>
+        <h1>Given your current portfolio, investing in Apple Inc. (AAPL) in the upcoming quarter is promising, driven by positive news sentiment from its innovative product launches, 
+          strong fundamentals with a recent reported revenue of over $83 billion, and a historical pattern of stock resilience. AAPL has consistently shown robust growth, with its stock
+          price often outperforming market expectations and swiftly recovering from downturns, indicating a solid investment choice.</h1>
+      </div>
+      <div class="grid-item two">
+        <h2>Stock Predictions:</h2>
+        <br>
+        <h1>AAPL: 📈 Sentiment 8.8/10;  Q3 Rev >$83B; 📊 historical trend ↑; 🟢 Buy Signal</h1>
+        <br>
+        <h1>TSLA: 📉 Sentiment 2.2/10; 💰 Q3 Rev $23.35B (↓ from Q2); 📊 Stock -20% since July; 🔴 Sell Signal.</h1>
+      </div>
+    </section>
+  </section>
+</body>
+
+</html>

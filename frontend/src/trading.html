@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Reward Base Investing</title>
+  <link href="{{ url_for('static', filename='css/trading.css') }}" rel="stylesheet" type="text/css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"
+    type="text/css" />
+</head>
+
+<body>
+  <section id="sidebar">
+    <a href="{{ url_for('index') }}" style="text-decoration: none; color: #003260;">
+    <section class="title-container">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" width="40px" alt="logo" />
+      <h1>WISEBUCKS.AI</h1>
+    </section>
+    </a>
+    <section class="links-container">
+      <h2>FEATURES</h2>
+      <div class="links">
+        <div class="icon">
+          <i class="fa-solid fa-object-group"></i>
+        </div>
+        <a href="{{ url_for('dashboard') }}"><span>Dashboard</span></a>
+      </div>
+      <div class="links">
+        <div class="icon">
+          <i class="fas fa-chart-bar"></i>
+        </div>
+        <a href="{{ url_for('investment') }}"><span>Investment Challenge</span></a>
+      </div>
+      <div class="links active" style="color:#e8349c;">
+        <div class="icon">
+          <i class="fa-solid fa-file-lines" style="color:#e8349c"></i>
+        </div>
+        <span style>Paper Trading</span>
+
+      </div>
+      <div class="vl"></div>
+      <div class="links">
+        <div class="icon">
+          <i class="fa-solid fa-sack-dollar"></i>
+        </div>
+        <a href="{{ url_for('wisewealth') }}"><span>WiseWealth</span></a>
+      </div>
+      <h2>DOCUMENTATION</h2>
+      <div class="links">
+        <div class="icon">
+          <i class="fa-brands fa-youtube"></i>
+        </div>
+        <a href="#"><span>Tutorials</span></a>
+      </div>
+      <div class="chatbot-button-container">
+        <a class="chatbot-button" href="#"><i class="fa-solid fa-robot" style="padding-right: 10px;"></i>LAUNCH
+          CHATBOT</a>
+      </div>
+    </section>
+  </section>
+  <section id="main-dashboard-content">
+    <section id="top-section">
+      <h1 id="welcome-title">Hello, Sally Norman</h1>
+      <div class="action-icons">
+        <div class="action-icon-one"></div>
+        <span style="font-size: 30px; padding-left: 10px;">▾</span>
+      </div>
+    </section>
+    <h2 class="top-dash">PAPER TRADING</h2>
+    
+    <section id="grid-container">
+      <div class="grid-item one"></div>
+      <div class="grid-item two"></div>
+    </section>
+    <section id="grid-container2">
+      <div class="grid-item one"></div>
+      <div class="grid-item two"></div>
+    </section>
+  </section>
+</body>
+
+</html>

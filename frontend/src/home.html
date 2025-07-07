@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Wisebucks</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet"
+    type="text/css" />
+</head>
+
+<body>
+  <div class="header">
+    <ul>
+      <li><a href="{{ url_for('index') }}">WISEBUCKS.AI</a></li>
+
+      <div class="dropdown">
+        <li><a href="#">Features ▾</a></li>
+        <div class="dropdown-content">
+          <a href="{{ url_for('chatbot') }}">WiseBucks Chatbot</a>
+          <a href="{{ url_for('investment') }}">Investment Challenge</a>
+          <a href="#">Reward Base Investing</a>
+          <a href="{{ url_for('trading') }}">Paper Trading</a>
+        </div>
+      </div>
+      <li><a href="#">About Us</a></li>
+      <li style="padding-right: 570px;"><a href="#">Contact Us</a></li>
+
+      <li><a href="{{ url_for('login') }}">Login</a></li>
+      <li><a href="{{ url_for('signup') }}" style="background-color: white; color: #003260; border-radius: 5px;">Sign Up</a></li>
+    </ul>
+    <h4>Welcome to</h4>
+    <h2>WiseBucks.AI</h2>
+    <p>The Personal Assistant For Your Investment Journey</p>
+
+    <div class="custom-button-container">
+      <a class="custom-button" href="{{ url_for('dashboard') }}">GET STARTED</a>
+    </div>
+    <div class="login-container">
+      <a class="login-button" href="{{ url_for('login') }}">LOGIN</a>
+    </div>
+
+  </div>
+
+  <div class="mission">
+    <h1>OUR MISSION</h1>
+    <h2>Transforming your investment journey with precision and simplicity through our integrated AI platform, delivering accurate insights and personalized education for an elevated retail investor experience.</h2>
+
+    <div class="row">
+      <div class="column">
+        <div class="image">
+          <img src="{{ url_for('static', filename='images/target.png') }}">
+        </div>
+        <div class="image-text">
+          <p>Seamless investment with</p>
+          <p>our integrated AI platform</p>
+        </div>
+
+      </div>
+
+      <div class="column">
+        <div class="image">
+          <img src="{{ url_for('static', filename='images/target.png') }}">
+        </div>
+        <div class="image-text">
+          <p>Personalized insights for</p>
+          <p>accurate investment decisions</p>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="image">
+          <img src="{{ url_for('static', filename='images/target.png') }}">
+        </div>
+        <div class="image-text">
+          <p> Elevate your experience</p>
+          <p>with comprehensive education</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="chat-box">
+    <h2>AI INTERGRATION</h2>
+    <h1>WISEBUCK CHATBOX</h1>
+    <h3></h3>
+    <div class="chatbot-button-container">
+      <a class="chatbot-button" href="{{ url_for('chatbot') }}">EXPLORE CHATBOT</a>
+    </div>
+  </div>
+
+  <div class="chat-box2">
+    <h2>PEER TO PEER COMPETITION</h2>
+    <h1>INVESTMENT CHALLENGE</h1>
+    <h3></h3>
+    <div class="chatbot2-button-container">
+      <a class="chatbot2-button" href="#">EXPLORE CHALLENGE</a>
+    </div>
+  </div>
+
+  <div class="chat-box">
+    <h2></h2>
+    <h1>REWARD BASE INVESTING</h1>
+    <h3></h3>
+    <div class="chatbot-button-container">
+      <a class="chatbot-button" href="{{ url_for('investment') }}">EXPLORE INVESTING</a>
+    </div>
+  </div>
+
+  <div class="chat-box2">
+    <h2></h2>
+    <h1>PAPER TRADING</h1>
+    <h3></h3>
+    <div class="chatbot2-button-container">
+      <a class="chatbot2-button" href="{{ url_for('trading') }}">EXPLORE TRADING</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="row">
+        <div class="footer-col">
+          <h4 style="margin-bottom: 0; padding-bottom: 0; font-size: 30px;">LO</h4>
+          <h4 style="margin-top: 0; padding-top: 0; font-size: 30px;">GO</h4>
+        </div>
+        <div class="footer-col" style="border-right: 1mm solid white;
+">
+          <h4 style="font-size: 24px;">WiseBucks.AI</h4>
+          <h6 style="color: white; font-size: 8px;"><i class="fa-regular fa-copyright"></i>WiseBuck.Ai, 2023</h6>
+          <ul>
+            <li><a href=""></a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Features</h4>
+          <ul>
+            <li><a href="{{ url_for('chatbot') }}">Wisebuck Chatbot</a></li>
+            <li><a href="{{ url_for('investment') }}">Investment Challenege</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4 style="color: inherit;">.</h4>
+          <ul>
+            <li><a href="#">Reward Base Investing</a></li>
+            <li><a href="{{ url_for('trading') }}">Paper Trading</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Follow Us</h4>
+          <div class="socials">
+            <a href="#"><i class="fab fa-instagram"
+                style="display: inline-block; color: white;height: 20px;width: 20px;margin: 0 10px 10px 0;text-align: center;line-height: 40px; "></i></a>
+            <a href="#"><i class="fab fa-facebook"
+                style="display: inline-block; color: white;height: 20px;width: 20px;margin: 0 10px 10px 0;text-align: center;line-height: 40px;"></i></a>
+            <a href="#"><i class="fab fa-twitter"
+                style="display: inline-block; color: white;height: 20px;width: 20px;margin: 0 10px 10px 0;text-align: center;line-height: 40px;"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Join the community</h4>
+          <div class="socials">
+            <a href="#" style="color: white; text-decoration: none;"><i class="fab fa-discord"
+                style="display: inline-block; color: white;height: 20px;width: 20px;margin: 0 10px 10px 0;text-align: center;line-height: 40px;"></i>Learn
+              to Grow</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <div class="footer-button-container">
+            <h4 style="color: inherit;">.</h4>
+            <a class="footer-button" href="#">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <script src="{{ url_for('static', filename='js/signup.js') }}"></script>
+</body>
+
+</html>

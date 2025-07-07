@@ -1,80 +1,80 @@
-* { 
-  box-sizing: border-box; 
+* {
+  box-sizing: border-box;
 }
-body { 
-  font-family: Arial, sans-serif; 
-  margin: 0; 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
   padding: 0;
-  background-color: #fff; 
+  background-color: #fff;
 }
-.container { 
+.container {
   display: flex;
-  padding: 10px; 
+  padding: 10px;
 }
-.left-column { 
-  width: 25%; 
-  padding: 10px; 
+.left-column {
+  width: 25%;
+  padding: 10px;
 }
-.right-column { 
-  width: 75%; 
-  padding: 10px; 
+.right-column {
+  width: 75%;
+  padding: 10px;
 }
-.card { 
+.card {
   background: #fff;
-  margin-bottom: 20px; 
-  padding: 20px; 
-  border-radius: 4px; 
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.footer { 
-  text-align: center; 
+.footer {
+  text-align: center;
   padding: 20px 0;
 }
 
 /* Adjustments for Financial Overview */
 .financial-overview {
-display: flex;
-justify-content: space-around;
-padding: 20px;
-background: #fff;
-margin-bottom: 20px;
-border-radius: 4px;
-box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  background: #fff;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .card-section {
-text-align: center;
-padding: 10px;
+  text-align: center;
+  padding: 10px;
 }
 
 .card-section h2 {
-color: #666;
-font-size: 1.1em;
-margin-bottom: 0.5em;
+  color: #666;
+  font-size: 1.1em;
+  margin-bottom: 0.5em;
 }
 
 .card-section .amount {
-color: #333;
-font-size: 1.8em;
-margin-bottom: 0.5em;
+  color: #333;
+  font-size: 1.8em;
+  margin-bottom: 0.5em;
 }
 
 .card-section .percentage {
-color: #4CAF50;
-font-size: 1.2em;
-margin-bottom: 0.2em;
+  color: #4caf50;
+  font-size: 1.2em;
+  margin-bottom: 0.2em;
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-.financial-overview {
-  flex-direction: column;
-}
+  .financial-overview {
+    flex-direction: column;
+  }
 
-.card-section {
-  padding: 10px 0;
-}
+  .card-section {
+    padding: 10px 0;
+  }
 }
 
 .holdings-overview {
@@ -89,115 +89,112 @@ margin-bottom: 0.2em;
 
 /* Add any additional styles you need below */
 
-  
-  .icon-and-text {
-    display: flex;
-    align-items: center;
-  }
-  
-  .icon {
-    /* Add styles for the icon, or replace with an actual image */
-    font-size: 24px;
-    margin-right: 10px;
-  }
-  
-  .amount {
-    font-size: 2em;
-    margin: 5px 0;
-  }
-  
-  .description {
-    margin: 2px 0;
-  }
-  
-  .percentage {
-    font-size: 1.5em;
-    color: #4CAF50; /* or any color indicating profit/loss */
-  }
-  
-  .holdings-chart {
-    /* Placeholder styles for the bar chart */
-    height: 50px;
-    width: 100%;
-    background-image: url('path-to-your-colorful-bar-chart.png'); /* Replace with actual path */
-    background-size: cover;
-  }
-  
-  .holdings-stats .stat {
-    text-align: center;
-  }
-  
-  .color-indicator {
-    width: 5px;
-    height: 100%;
-    background-color: #4CAF50; /* Default color, will be overridden by JS */
-    float: left;
-    margin-right: 5px; /* Space between indicator and ticker name */
+.icon-and-text {
+  display: flex;
+  align-items: center;
 }
 
-  
-h2 {
-    color: #666;
-    font-size: 1.2em;
-    margin-bottom: 0.5em;
+.icon {
+  /* Add styles for the icon, or replace with an actual image */
+  font-size: 24px;
+  margin-right: 10px;
 }
 
 .amount {
-    color: #333;
-    font-size: 2em;
-    margin-bottom: 0.2em;
+  font-size: 2em;
+  margin: 5px 0;
 }
 
 .description {
-    color: #999;
-    font-size: 1em;
-    margin-bottom: 0.5em;
+  margin: 2px 0;
+}
+
+.percentage {
+  font-size: 1.5em;
+  color: #4caf50; /* or any color indicating profit/loss */
+}
+
+.holdings-chart {
+  height: 50px;
+  width: 100%;
+  background-image: url("../images/colorful-bar-chart.png");
+  background-size: cover;
+}
+
+.holdings-stats .stat {
+  text-align: center;
+}
+
+.color-indicator {
+  width: 5px;
+  height: 100%;
+  background-color: #4caf50; /* Default color, will be overridden by JS */
+  float: left;
+  margin-right: 5px; /* Space between indicator and ticker name */
+}
+
+h2 {
+  color: #666;
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+.amount {
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 0.2em;
+}
+
+.description {
+  color: #999;
+  font-size: 1em;
+  margin-bottom: 0.5em;
 }
 
 .left-column {
-    width: 25%; /* Adjust width as needed */
-    padding: 10px;
-    background-color: #fff; /* Your background color */
-    overflow-y: auto; /* Enables scrolling if there are many tickers */
-  }
-  
-  .stock-box {
-    background: #ffffff;
-    margin-bottom: 10px;
-    padding: 10px 5px; /* Reduced vertical padding */
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    display: flex; /* Use flexbox to align items */
-    align-items: center; /* Center items vertically */
-    justify-content: space-between; /* Space out the contents */
+  width: 25%; /* Adjust width as needed */
+  padding: 10px;
+  background-color: #fff; /* Your background color */
+  overflow-y: auto; /* Enables scrolling if there are many tickers */
+}
+
+.stock-box {
+  background: #ffffff;
+  margin-bottom: 10px;
+  padding: 10px 5px; /* Reduced vertical padding */
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Center items vertically */
+  justify-content: space-between; /* Space out the contents */
 }
 
 .stock-box h2 {
-    font-size: 0.9em; /* Adjust font size as needed */
-    color: #333; /* Change color based on your design */
+  font-size: 0.9em; /* Adjust font size as needed */
+  color: #333; /* Change color based on your design */
 }
 
 /* .stock-change {
     font-size: 0.9em;
     /* Use your color classes to change the color based on the stock price change 
 }*/
-  
-  .stock-price {
-    font-size: 1.2em;
-    font-weight: bold;
-  }
-  
-  .stock-change {
-    font-size: 0.9em;
-    color: #4CAF50; /* Green for positive, red for negative */
-  }
-  
+
+.stock-price {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.stock-change {
+  font-size: 0.9em;
+  color: #4caf50; /* Green for positive, red for negative */
+}
+
 .stock-change.positive {
-    color: #4CAF50; /* Green for positive change */
+  color: #4caf50; /* Green for positive change */
 }
 
 .stock-change.negative {
-    color: #f44336; /* Red for negative change */
+  color: #f44336; /* Red for negative change */
 }
 
 .dark-red {
@@ -205,7 +202,7 @@ h2 {
 }
 
 .red {
-  color: #FF0000;
+  color: #ff0000;
 }
 
 .gray {
@@ -213,46 +210,55 @@ h2 {
 }
 
 .green {
-  color: #00BB00;
+  color: #00bb00;
 }
 
 .dark-green {
   color: #006600;
 }
 
-
-.dark-red, .dark-red h2, .dark-red .stock-change {
+.dark-red,
+.dark-red h2,
+.dark-red .stock-change {
   color: #880000;
 }
 
-.red, .red h2, .red .stock-change {
-  color: #FF0000;
+.red,
+.red h2,
+.red .stock-change {
+  color: #ff0000;
 }
 
-.gray, .gray h2, .gray .stock-change {
+.gray,
+.gray h2,
+.gray .stock-change {
   color: #808080;
 }
 
-.green, .green h2, .green .stock-change {
-  color: #00BB00;
+.green,
+.green h2,
+.green .stock-change {
+  color: #00bb00;
 }
 
-.dark-green, .dark-green h2, .dark-green .stock-change {
+.dark-green,
+.dark-green h2,
+.dark-green .stock-change {
   color: #006600;
 }
 .red-flash {
   transition: background-color 1s;
-  background-color: #ffcccc !important; 
+  background-color: #ffcccc !important;
 }
 
 .green-flash {
   transition: background-color 1s;
-  background-color: #ccffcc !important; 
+  background-color: #ccffcc !important;
 }
 
 .gray-flash {
   transition: background-color 1s;
-  background-color: #ccc !important; 
+  background-color: #ccc !important;
 }
 
 .card-bottom {
@@ -300,10 +306,9 @@ h2 {
 .model-controls button {
   margin-top: 20px;
   padding: 10px 15px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
-
